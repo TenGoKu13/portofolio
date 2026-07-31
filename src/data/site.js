@@ -10,7 +10,7 @@ export const site = {
   // Ta photo de profil (hero). Remplace le placeholder :
   // dépose ta photo dans public/ (ex: public/avatar.png) puis mets son
   // chemin ici, ex: "/avatar.png". Laisse "" pour afficher une initiale.
-  avatar: "/avatar.svg",
+  avatar: "/avatar.jpg",
 
   // Tes liens (mets tes vraies URLs). Laisse vide "" pour cacher un lien.
   socials: {
