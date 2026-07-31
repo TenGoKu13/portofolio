@@ -219,6 +219,51 @@ a {
   padding: 90px 0 60px;
   position: relative;
 }
+/* Photo de profil du hero */
+.avatar-ring {
+  position: relative;
+  border-radius: 50%;
+  padding: 3px;
+  margin-bottom: 26px;
+  background: conic-gradient(
+    from 180deg,
+    var(--indigo-strong),
+    var(--green),
+    var(--indigo)
+  );
+  box-shadow: var(--glow-indigo);
+}
+.avatar-img,
+.avatar-fallback {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--bg);
+  background: var(--surface-solid);
+}
+.avatar-fallback {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 2.2rem;
+  color: var(--indigo);
+}
+.avatar-status {
+  position: absolute;
+  right: 6px;
+  bottom: 6px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--green);
+  border: 3px solid var(--bg);
+  box-shadow: 0 0 10px var(--green);
+}
+
 .hero .eyebrow {
   display: inline-flex;
   align-items: center;

@@ -2,6 +2,7 @@ import Link from "next/link";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import Reveal from "@/components/Reveal";
+import Avatar from "@/components/Avatar";
 import { Icons } from "@/components/icons";
 import { site } from "@/data/site";
 
@@ -15,6 +16,9 @@ export default function Home() {
       <div className="container">
         <header className="hero">
           <Reveal>
+            <Avatar src={site.avatar} name={site.name} />
+          </Reveal>
+          <Reveal delay={40}>
             <span className="eyebrow">
               <span className="dot" />
               Disponible pour de nouveaux projets
