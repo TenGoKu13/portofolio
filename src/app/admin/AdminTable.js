@@ -8,6 +8,37 @@ const STATUS_LABELS = {
   termine: "Terminé",
 };
 
+// Parse la checklist stockée en JSON (tolérant aux valeurs vides/invalides).
+function parseChecklist(raw) {
+  if (!raw) return [];
+  try {
+    const arr = JSON.parse(raw);
+    return Array.isArray(arr) ? arr : [];
+  } catch {
+    return [];
+  }
+}
+
+// Affiche la deadline avec un repère de couleur : rouge si passée,
+// jaune si dans moins de 3 jours, sinon normal.
+function renderDeadline(deadline) {
+  if (!deadline) return <span className="note">—</span>;
+  const target = new Date(deadline + "T00:00:00");
+  const now = new Date();
+  const days = Math.ceil((target - now) / 86400000);
+  let cls = "termine"; // vert par défaut (large)
+  let extra = "";
+  if (days < 0) {
+    cls = "past";
+    extra = " (dépassée)";
+  } else if (days <= 3) {
+    cls = "en_cours";
+    extra = ` (J-${days})`;
+  }
+  const label = target.toLocaleDateString("fr-FR");
+  return <span className={`status ${cls}`}>{label}{extra}</span>;
+}
+
 export default function AdminTable({ requests, typeLabels }) {
   const [items, setItems] = useState(requests);
 
@@ -32,6 +63,7 @@ export default function AdminTable({ requests, typeLabels }) {
             <th>Date</th>
             <th>De</th>
             <th>Type</th>
+            <th>Deadline</th>
             <th>Message</th>
             <th>Statut</th>
           </tr>
@@ -50,8 +82,18 @@ export default function AdminTable({ requests, typeLabels }) {
                 </span>
               </td>
               <td>{typeLabels[r.type] || r.type}</td>
-              <td style={{ maxWidth: 320, whiteSpace: "pre-wrap" }}>
-                {r.message}
+              <td style={{ whiteSpace: "nowrap" }}>{renderDeadline(r.deadline)}</td>
+              <td style={{ maxWidth: 320 }}>
+                <div style={{ whiteSpace: "pre-wrap" }}>{r.message}</div>
+                {parseChecklist(r.checklist).length > 0 && (
+                  <div className="tags" style={{ marginTop: 8 }}>
+                    {parseChecklist(r.checklist).map((c) => (
+                      <span className="tag" key={c}>
+                        ✓ {c}
+                      </span>
+                    ))}
+                  </div>
+                )}
               </td>
               <td>
                 <span className={`status ${r.status}`}>

@@ -25,7 +25,10 @@ export default async function DemandePage() {
               <strong>{user.global_name || user.username}</strong>. Décris ta
               demande, je la reçois directement sur mon tableau de bord.
             </p>
-            <RequestForm types={site.requestTypes} />
+            <RequestForm
+              types={site.requestTypes}
+              checklist={site.checklist}
+            />
           </>
         ) : (
           <div className="center-narrow">

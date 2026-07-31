@@ -26,9 +26,23 @@ export async function POST(request) {
     );
   }
 
+  // Deadline : on ne garde qu'un format de date valide YYYY-MM-DD.
+  const rawDeadline = String(body.deadline || "").trim();
+  const deadline = /^\d{4}-\d{2}-\d{2}$/.test(rawDeadline) ? rawDeadline : null;
+
+  // Checklist : tableau de chaînes -> stocké en JSON (max 20 items).
+  const checklist = Array.isArray(body.checklist)
+    ? JSON.stringify(
+        body.checklist.map((s) => String(s).slice(0, 120)).slice(0, 20)
+      )
+    : null;
+
   const info = db
-    .prepare(`INSERT INTO requests (user_id, type, message) VALUES (?, ?, ?)`)
-    .run(user.id, type, message);
+    .prepare(
+      `INSERT INTO requests (user_id, type, message, deadline, checklist)
+       VALUES (?, ?, ?, ?, ?)`
+    )
+    .run(user.id, type, message, deadline, checklist);
 
   return NextResponse.json({ ok: true, id: info.lastInsertRowid });
 }
