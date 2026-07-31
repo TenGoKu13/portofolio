@@ -65,11 +65,21 @@ export default function TermsPage() {
 
         <h2>6. Droit applicable</h2>
         <p>
-          Les présentes conditions sont régies par le droit {site.legal.country}
-          . Tout litige relève des tribunaux compétents en {site.legal.country}.
+          Les présentes conditions sont régies par le droit {site.legal.country}.
+          Tout litige relève des tribunaux compétents en {site.legal.country}.
         </p>
 
-        <h2>7. Contact</h2>
+        <h2>7. Hébergeur</h2>
+        <p>
+          Le site est hébergé sur un {site.legal.host.product} chez{" "}
+          <strong>{site.legal.host.name}</strong>, {site.legal.host.address} (
+          <a href={site.legal.host.website} target="_blank" rel="noreferrer">
+            {site.legal.host.website}
+          </a>
+          ).
+        </p>
+
+        <h2>8. Contact</h2>
         <p>
           Pour toute question :{" "}
           <a href={`mailto:${site.legal.contactEmail}`}>

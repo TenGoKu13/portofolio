@@ -116,5 +116,12 @@ export const site = {
     madeIn: "Made in Switzerland",
     contactEmail: "tengokutengoku963@gmail.com",
     lastUpdated: "2026-07-31",
+    // Hébergeur du site (obligatoire dans les mentions légales).
+    host: {
+      name: "OVH SAS (OVHcloud)",
+      address: "2 rue Kellermann, 59100 Roubaix, France",
+      website: "https://www.ovhcloud.com",
+      product: "VPS OVHcloud",
+    },
   },
 };

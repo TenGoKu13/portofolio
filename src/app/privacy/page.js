@@ -48,7 +48,21 @@ export default function PrivacyPage() {
 
         <h2>3. Hébergement</h2>
         <p>
-          Le site et sa base de données sont hébergés sur un serveur privé.
+          Le site et sa base de données sont hébergés sur un{" "}
+          {site.legal.host.product} chez :
+        </p>
+        <ul>
+          <li>
+            <strong>{site.legal.host.name}</strong>
+          </li>
+          <li>{site.legal.host.address}</li>
+          <li>
+            <a href={site.legal.host.website} target="_blank" rel="noreferrer">
+              {site.legal.host.website}
+            </a>
+          </li>
+        </ul>
+        <p>
           Les données sont conservées aussi longtemps que nécessaire au suivi
           des demandes.
         </p>
