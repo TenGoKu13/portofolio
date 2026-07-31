@@ -13,7 +13,10 @@ export default async function DemandePage() {
     <>
       <Nav />
       <main className="section container">
-        <h2>Faire une demande</h2>
+        <div className="section-head">
+          <h2>Faire une demande</h2>
+          <span className="count">// direct</span>
+        </div>
 
         {user ? (
           <>
@@ -29,7 +32,7 @@ export default async function DemandePage() {
             <p className="note" style={{ marginBottom: 20 }}>
               Connecte-toi avec ton compte Discord pour envoyer une demande.
             </p>
-            <a className="btn" href="/api/auth/login">
+            <a className="btn btn-indigo" href="/api/auth/login">
               Se connecter avec Discord
             </a>
           </div>

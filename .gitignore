@@ -22,3 +22,7 @@ npm-debug.log*
 
 # os
 .DS_Store
+
+# python cache (skills)
+__pycache__/
+*.pyc

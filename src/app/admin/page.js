@@ -41,7 +41,10 @@ export default async function AdminPage() {
     <>
       <Nav />
       <main className="section container">
-        <h2>Demandes reçues ({requests.length})</h2>
+        <div className="section-head">
+          <h2>Demandes reçues</h2>
+          <span className="count">// {requests.length}</span>
+        </div>
         {requests.length === 0 ? (
           <p className="note">Aucune demande pour le moment.</p>
         ) : (
