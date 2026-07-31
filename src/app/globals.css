@@ -326,7 +326,7 @@ a {
 /* ---------------- Stats (preuve sociale) ---------------- */
 .stats {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   gap: 16px;
   margin: 8px 0 20px;
 }
@@ -391,6 +391,46 @@ a {
 .section-head .count {
   color: var(--indigo);
   font-size: 0.9rem;
+}
+
+/* ---------------- À propos + compétences ---------------- */
+.about {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  align-items: start;
+}
+.about-text p {
+  color: var(--muted);
+  font-size: 1rem;
+  margin: 0 0 16px;
+}
+.about-text p:last-child {
+  margin-bottom: 0;
+}
+.about-skills {
+  display: grid;
+  gap: 20px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 26px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+.skill-group h3 {
+  font-family: var(--font-display);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: var(--indigo);
+  margin: 0 0 12px;
+}
+@media (max-width: 720px) {
+  .about {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* ---------------- Projets (grid glass) ---------------- */
