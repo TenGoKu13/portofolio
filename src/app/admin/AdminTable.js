@@ -81,7 +81,13 @@ export default function AdminTable({ requests, typeLabels }) {
                   @{r.username}
                 </span>
               </td>
-              <td>{typeLabels[r.type] || r.type}</td>
+              <td>
+                {typeLabels[r.type] || r.type}
+                <br />
+                <a href={`/demande/${r.id}`} className="req-open">
+                  Discussion →
+                </a>
+              </td>
               <td style={{ whiteSpace: "nowrap" }}>{renderDeadline(r.deadline)}</td>
               <td style={{ maxWidth: 320 }}>
                 <div style={{ whiteSpace: "pre-wrap" }}>{r.message}</div>

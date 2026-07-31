@@ -40,6 +40,16 @@ db.exec(`
     created_at  TEXT NOT NULL DEFAULT (datetime('now')),
     FOREIGN KEY (user_id) REFERENCES users(id)
   );
+
+  CREATE TABLE IF NOT EXISTS messages (
+    id          INTEGER PRIMARY KEY AUTOINCREMENT,
+    request_id  INTEGER NOT NULL,
+    user_id     TEXT NOT NULL,           -- auteur du message
+    body        TEXT NOT NULL,
+    created_at  TEXT NOT NULL DEFAULT (datetime('now')),
+    FOREIGN KEY (request_id) REFERENCES requests(id),
+    FOREIGN KEY (user_id) REFERENCES users(id)
+  );
 `);
 
 // Migration légère : ajoute les colonnes si une ancienne base existe déjà.
