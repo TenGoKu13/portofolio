@@ -51,6 +51,16 @@ db.exec(`
     FOREIGN KEY (user_id) REFERENCES users(id)
   );
 
+  CREATE TABLE IF NOT EXISTS request_steps (
+    id          INTEGER PRIMARY KEY AUTOINCREMENT,
+    request_id  INTEGER NOT NULL,
+    label       TEXT NOT NULL,
+    done        INTEGER NOT NULL DEFAULT 0,   -- 0 = à faire, 1 = fait
+    position    INTEGER NOT NULL DEFAULT 0,
+    created_at  TEXT NOT NULL DEFAULT (datetime('now')),
+    FOREIGN KEY (request_id) REFERENCES requests(id)
+  );
+
   CREATE TABLE IF NOT EXISTS reviews (
     id          INTEGER PRIMARY KEY AUTOINCREMENT,
     user_id     TEXT NOT NULL UNIQUE,    -- 1 avis par personne (mis à jour si re-posté)
