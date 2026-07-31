@@ -3,6 +3,7 @@ import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import Reveal from "@/components/Reveal";
 import Avatar from "@/components/Avatar";
+import Stats from "@/components/Stats";
 import { Icons } from "@/components/icons";
 import { site } from "@/data/site";
 
@@ -51,6 +52,12 @@ export default function Home() {
             </div>
           </Reveal>
         </header>
+
+        {site.stats?.length > 0 && (
+          <Reveal>
+            <Stats stats={site.stats} />
+          </Reveal>
+        )}
 
         <section className="section" id="projets">
           <Reveal>
