@@ -3,7 +3,6 @@ import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import Reveal from "@/components/Reveal";
 import Avatar from "@/components/Avatar";
-import WebExamples from "@/components/WebExamples";
 import { Icons } from "@/components/icons";
 import { site } from "@/data/site";
 
@@ -116,10 +115,6 @@ export default function Home() {
             })}
           </div>
         </section>
-
-        {site.webExamples?.length > 0 && (
-          <WebExamples examples={site.webExamples} />
-        )}
 
         {socials.length > 0 && (
           <section className="section" id="contact">

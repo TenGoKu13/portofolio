@@ -4,17 +4,19 @@ import { Icons } from "@/components/icons";
 
 // Galerie "Réalisations web" : une carte cliquable par site.
 // Le clic mène à la page de détail /realisations/[slug].
-export default function WebExamples({ examples = [] }) {
+export default function WebExamples({ examples = [], showHeading = true }) {
   if (!examples.length) return null;
 
   return (
     <section className="section" id="realisations">
-      <Reveal>
-        <div className="section-head">
-          <h2>Réalisations web</h2>
-          <span className="count">// {examples.length}</span>
-        </div>
-      </Reveal>
+      {showHeading && (
+        <Reveal>
+          <div className="section-head">
+            <h2>Réalisations web</h2>
+            <span className="count">// {examples.length}</span>
+          </div>
+        </Reveal>
+      )}
 
       <div className="examples">
         {examples.map((ex, i) => (

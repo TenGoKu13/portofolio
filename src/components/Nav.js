@@ -23,6 +23,7 @@ export default async function Nav() {
       </Link>
       <div className="nav-links">
         <Link href="/#projets">Projets</Link>
+        <Link href="/realisations">Réalisations</Link>
         <Link href="/demande">Demande</Link>
         {user?.isAdmin && <Link href="/admin">Admin</Link>}
         {user ? (
