@@ -18,7 +18,7 @@ export function generateMetadata({ params }) {
   const ex = examples.find((e) => e.slug === params.slug);
   if (!ex) return {};
   return {
-    title: `${ex.title} — ${site.name}`,
+    title: ex.title,
     description: ex.subtitle || ex.description,
   };
 }

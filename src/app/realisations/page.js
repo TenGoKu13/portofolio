@@ -6,7 +6,7 @@ import WebExamples from "@/components/WebExamples";
 import { site } from "@/data/site";
 
 export const metadata = {
-  title: `Réalisations web — ${site.name}`,
+  title: "Réalisations web",
   description: "Sites et applications web réalisés par TenGoKu.",
 };
 
