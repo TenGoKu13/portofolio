@@ -7,7 +7,11 @@ import db from "@/lib/db";
 import { site } from "@/data/site";
 import { getCurrentUser } from "@/lib/session";
 
-export const metadata = { title: `Faire une demande — ${site.name}` };
+export const metadata = {
+  title: "Faire une demande",
+  description:
+    "Envoie-moi ta demande : player model GMod, site web, bot Discord ou autre. Réponse rapide.",
+};
 
 const TYPE_LABELS = Object.fromEntries(
   site.requestTypes.map((t) => [t.value, t.label])

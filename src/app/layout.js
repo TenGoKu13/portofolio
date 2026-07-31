@@ -2,9 +2,28 @@ import "./globals.css";
 import { site } from "@/data/site";
 import Ambient from "@/components/Ambient";
 
+const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://tengoku.ch";
+
 export const metadata = {
-  title: `${site.name} — Portfolio`,
+  metadataBase: new URL(baseUrl),
+  title: {
+    default: `${site.name} — Portfolio`,
+    template: `%s — ${site.name}`,
+  },
   description: site.tagline,
+  openGraph: {
+    title: `${site.name} — Portfolio`,
+    description: site.tagline,
+    url: baseUrl,
+    siteName: site.name,
+    locale: "fr_FR",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${site.name} — Portfolio`,
+    description: site.tagline,
+  },
 };
 
 export const viewport = {
