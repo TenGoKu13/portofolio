@@ -84,6 +84,101 @@ export const site = {
     },
   ],
 
+  // Exemples de sites web déjà réalisés (galerie "Réalisations web").
+  // Chaque exemple : titre, sous-titre, description, stack, fonctionnalités,
+  // une image principale (cover) et des captures supplémentaires (shots).
+  // Dépose les images dans public/examples/ et référence-les ici.
+  webExamples: [
+    {
+      title: "AIT Medical Corps — Gestion VM",
+      subtitle: "Plateforme médicale RP tout-en-un",
+      status: "Réalisé",
+      description:
+        "Application web complète regroupant 4 modules autour d'un espace médical : Rapport AMC (rapports hebdomadaires + statistiques d'équipe), Gestion VM (visites médicales, ordonnances, planning de RDV), Espace Encadrement (validation, commandement, blacklist, opérations) et Effectif (grades, présences, distinctions). Données stockées dans Google Sheets, rôles dérivés du grade via NextAuth, interface « HUD » sombre avec parcours de prise de RDV en 3 étapes en accès libre.",
+      cover: "/examples/ait-medical-home.jpeg",
+      shots: ["/examples/ait-medical-home.jpeg", "/examples/ait-medical-rdv.jpeg"],
+      stack: [
+        "Next.js 14",
+        "React 18",
+        "TypeScript",
+        "Tailwind CSS",
+        "NextAuth",
+        "Google Sheets API",
+        "Recharts",
+        "jsPDF",
+        "Vercel",
+      ],
+      features: [
+        "Authentification par rôle",
+        "Dashboard & statistiques (Recharts)",
+        "Prise de RDV multi-étapes",
+        "Génération d'ordonnances / PDF",
+        "Gestion effectif & médailles",
+        "Espace admin / validation",
+        "PWA (icônes, manifest)",
+      ],
+      link: "",
+    },
+    {
+      title: "Système Rapport Ingénieur",
+      subtitle: "Suivi hebdomadaire des ingénieurs de combat",
+      status: "Réalisé",
+      description:
+        "Application dédiée au reporting d'une section technique. Espace membre (dashboard, nouveau rapport, historique, carrière, absences) et espace administrateur complet (effectif, validation des rapports, sanctions, blacklist, organigramme, santé de l'effectif, journal, réglages système). Accès différencié entre l'espace public/rapports et la connexion « Ingénieur Cadre / en Chef ». Identité visuelle orange/noir monospace « terminal » avec compteurs en temps réel.",
+      cover: "/examples/ingenieur-home.jpeg",
+      shots: ["/examples/ingenieur-home.jpeg", "/examples/ingenieur-login.jpeg"],
+      stack: [
+        "Next.js 14",
+        "React 18",
+        "TypeScript",
+        "Tailwind CSS",
+        "NextAuth",
+        "Google Sheets API",
+        "Recharts",
+        "lucide-react",
+        "sonner",
+        "Vercel",
+      ],
+      features: [
+        "Double espace membre / admin",
+        "Soumission & validation de rapports hebdomadaires",
+        "Statistiques et évolution",
+        "Gestion d'effectif, sanctions & blacklist",
+        "Organigramme",
+        "Flux d'inscription / mot de passe",
+        "Notifications toast",
+      ],
+      link: "",
+    },
+    {
+      title: "Gestion CIAPT",
+      subtitle: "Inscriptions & certifications",
+      status: "Réalisé",
+      description:
+        "Application centrée sur la gestion d'un référentiel de certifications. Vérification publique sans connexion (recherche par nom, Steam ID ou Discord ID), tableau de bord instructeurs (KPIs, sparklines, alertes de renouvellement, statistiques mensuelles), saisie des inscriptions, blacklist, espace documents et administration (utilisateurs, journaux). Une tâche cron gère les renouvellements. Design SaaS épuré, thème violet, sparklines SVG maison et permissions par rôle.",
+      cover: "/examples/ciapt-dashboard.jpeg",
+      shots: ["/examples/ciapt-dashboard.jpeg"],
+      stack: [
+        "Next.js 14",
+        "React 18",
+        "NextAuth",
+        "Google Sheets API",
+        "Vercel (cron jobs)",
+      ],
+      features: [
+        "Vérification publique de certification",
+        "Dashboard KPIs + sparklines SVG",
+        "Alertes de renouvellement automatiques",
+        "Saisie & historique",
+        "Blacklist",
+        "Gestion documentaire",
+        "Admin utilisateurs / logs",
+        "Cron de renouvellement",
+      ],
+      link: "",
+    },
+  ],
+
   // Types de demandes proposés dans le formulaire.
   // "eta" = temps estimé de réalisation (indicatif, affiché sur le formulaire).
   requestTypes: [
