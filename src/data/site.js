@@ -60,7 +60,11 @@ export const site = {
   // Types de demandes proposés dans le formulaire.
   requestTypes: [
     { value: "pm_create", label: "Créer un player model (GMod)" },
-    { value: "playermodel", label: "Compresser / optimiser un player model" },
+    { value: "pm_modify", label: "Modifier / éditer un player model" },
+    { value: "pm_compress", label: "Compresser / optimiser un player model" },
+    { value: "pm_port", label: "Porter un modèle vers GMod" },
+    { value: "pm_rig", label: "Rig / animation d'un player model" },
+    { value: "pm_texture", label: "Retexture / reskin d'un player model" },
     { value: "site", label: "Faire un site web" },
     { value: "bot", label: "Créer un bot Discord" },
     { value: "autre", label: "Autre demande" },
