@@ -417,6 +417,33 @@ a {
   opacity: 1;
   transform: none;
 }
+/* Bouton d'appel visible en bas des cartes cliquables */
+.card-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 16px;
+  padding: 9px 16px;
+  border-radius: 999px;
+  border: 1px solid rgba(129, 140, 248, 0.35);
+  background: rgba(99, 102, 241, 0.12);
+  color: var(--indigo);
+  font-size: 0.82rem;
+  font-weight: 700;
+  transition: background 0.25s, gap 0.25s, color 0.25s, border-color 0.25s;
+}
+.card-cta svg {
+  transition: transform 0.25s;
+}
+.card-link:hover .card-cta {
+  background: var(--indigo-strong);
+  border-color: var(--indigo-strong);
+  color: #fff;
+  gap: 12px;
+}
+.card-link:hover .card-cta svg {
+  transform: translate(3px, -3px);
+}
 .badge {
   display: inline-flex;
   align-items: center;

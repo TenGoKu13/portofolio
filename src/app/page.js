@@ -63,9 +63,16 @@ export default function Home() {
           <div className="grid">
             {site.projects.map((p, i) => {
               const clickable = Boolean(p.link);
+              // Lien interne (#ancre ou /page) -> même onglet ; externe -> nouvel onglet
+              const internal = clickable && /^[#/]/.test(p.link);
               const Card = clickable ? "a" : "article";
               const linkProps = clickable
-                ? { href: p.link, target: "_blank", rel: "noreferrer" }
+                ? {
+                    href: p.link,
+                    ...(internal
+                      ? {}
+                      : { target: "_blank", rel: "noreferrer" }),
+                  }
                 : {};
               return (
                 <Reveal key={p.title} delay={i * 60}>
@@ -97,6 +104,12 @@ export default function Home() {
                         </span>
                       ))}
                     </div>
+                    {clickable && (
+                      <span className="card-cta">
+                        {p.cta || (internal ? "Voir" : "Visiter le site")}
+                        <Icons.arrow width={16} height={16} />
+                      </span>
+                    )}
                   </Card>
                 </Reveal>
               );

@@ -60,9 +60,10 @@ export const site = {
       category: "Site web",
       status: "Sur demande",
       description:
-        "Sites et applications web modernes, du portfolio à la plateforme complète. Voir mes réalisations plus bas.",
+        "Sites et applications web modernes, du portfolio à la plateforme complète.",
       tags: ["Next.js", "React", "Web"],
       link: "#realisations",
+      cta: "Voir mes réalisations",
     },
   ],
 
