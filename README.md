@@ -53,6 +53,8 @@ Site sur http://localhost:3000
 
 ## 3. Déployer sur un VPS OVH
 
+> 📘 **Guide complet pas-à-pas (sécurisation du VPS + déploiement) : [`DEPLOY.md`](./DEPLOY.md)** — adapté à `tengoku.ch`.
+>
 > Résumé : **VPS OVH** (pas l'hébergement mutualisé) + **nom de domaine** + **SSL Let's Encrypt gratuit**.
 
 ### a) Prépare le VPS
