@@ -426,6 +426,217 @@ a {
   border-radius: 6px;
 }
 
+/* ---------------- Réalisations web (galerie) ---------------- */
+.examples {
+  display: grid;
+  gap: 24px;
+}
+.example {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: 0;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: transform 0.3s var(--ease-out), border-color 0.3s, box-shadow 0.3s;
+}
+.example:hover {
+  transform: translateY(-4px);
+  border-color: var(--border-strong);
+  box-shadow: var(--shadow), var(--glow-indigo);
+}
+.example-cover {
+  position: relative;
+  display: block;
+  padding: 0;
+  border: none;
+  border-right: 1px solid var(--border);
+  background: #060a14;
+  cursor: zoom-in;
+  overflow: hidden;
+  min-height: 220px;
+}
+.example-cover img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-height: 340px;
+  object-fit: cover;
+  object-position: top center;
+  transition: transform 0.4s var(--ease-out), opacity 0.3s;
+}
+.example-cover:hover img {
+  transform: scale(1.04);
+  opacity: 0.85;
+}
+.example-zoom {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #fff;
+  background: rgba(11, 17, 32, 0.7);
+  border: 1px solid var(--border-strong);
+  border-radius: 999px;
+  padding: 6px 12px;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.25s, transform 0.25s;
+  backdrop-filter: blur(6px);
+}
+.example-cover:hover .example-zoom {
+  opacity: 1;
+  transform: none;
+}
+.example-body {
+  padding: 26px;
+  min-width: 0;
+}
+.example-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 14px;
+  margin-bottom: 6px;
+}
+.example-head h3 {
+  font-family: var(--font-display);
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+.example-head .badge {
+  margin-bottom: 0;
+  background: rgba(34, 197, 94, 0.12);
+  border-color: rgba(34, 197, 94, 0.3);
+  color: var(--green);
+  flex-shrink: 0;
+}
+.example-sub {
+  color: var(--indigo);
+  font-size: 0.82rem;
+  margin: 4px 0 0;
+}
+.example-desc {
+  color: var(--muted);
+  font-size: 0.9rem;
+  margin: 12px 0 14px;
+}
+.example-features {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 4px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 6px 16px;
+}
+.example-features li {
+  position: relative;
+  padding-left: 18px;
+  font-size: 0.82rem;
+  color: var(--muted);
+}
+.example-features li::before {
+  content: "▹";
+  position: absolute;
+  left: 0;
+  color: var(--indigo);
+}
+.example-thumbs {
+  display: flex;
+  gap: 10px;
+  margin-top: 14px;
+  flex-wrap: wrap;
+}
+.example-thumb {
+  padding: 0;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  cursor: zoom-in;
+  background: #060a14;
+  width: 92px;
+  height: 58px;
+  transition: border-color 0.2s, transform 0.2s;
+}
+.example-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+}
+.example-thumb:hover {
+  border-color: var(--indigo);
+  transform: translateY(-2px);
+}
+
+/* Lightbox plein écran */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px;
+  background: rgba(4, 7, 14, 0.86);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  cursor: zoom-out;
+  animation: lb-in 0.2s var(--ease-out);
+}
+@keyframes lb-in {
+  from {
+    opacity: 0;
+  }
+}
+.lightbox img {
+  max-width: 100%;
+  max-height: 90vh;
+  border-radius: var(--radius);
+  border: 1px solid var(--border-strong);
+  box-shadow: var(--shadow);
+  cursor: default;
+}
+.lightbox-close {
+  position: absolute;
+  top: 20px;
+  right: 24px;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 1px solid var(--border-strong);
+  background: rgba(11, 17, 32, 0.7);
+  color: #fff;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+}
+.lightbox-close:hover {
+  background: var(--surface);
+  border-color: var(--indigo);
+}
+
+@media (max-width: 720px) {
+  .example {
+    grid-template-columns: 1fr;
+  }
+  .example-cover {
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+  }
+  .example-cover img {
+    max-height: 220px;
+  }
+}
+
 /* ---------------- Formulaire ---------------- */
 .form {
   background: var(--surface);
