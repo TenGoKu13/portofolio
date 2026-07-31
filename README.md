@@ -103,12 +103,17 @@ Crée `/etc/nginx/sites-available/site-web` :
 server {
     server_name ton-domaine.fr www.ton-domaine.fr;
 
+    # Limite la taille des requêtes (anti-DoS mémoire)
+    client_max_body_size 1M;
+
     location / {
         proxy_pass http://localhost:3000;
         proxy_http_version 1.1;
         proxy_set_header Upgrade $http_upgrade;
         proxy_set_header Connection 'upgrade';
         proxy_set_header Host $host;
+        # X-Real-IP écrase toute valeur cliente -> IP fiable pour le rate-limit
+        proxy_set_header X-Real-IP $remote_addr;
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
         proxy_set_header X-Forwarded-Proto $scheme;
         proxy_cache_bypass $http_upgrade;
