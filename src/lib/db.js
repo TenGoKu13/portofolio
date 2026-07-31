@@ -50,7 +50,22 @@ db.exec(`
     FOREIGN KEY (request_id) REFERENCES requests(id),
     FOREIGN KEY (user_id) REFERENCES users(id)
   );
+
+  CREATE TABLE IF NOT EXISTS reviews (
+    id          INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id     TEXT NOT NULL UNIQUE,    -- 1 avis par personne (mis à jour si re-posté)
+    rating      INTEGER NOT NULL,        -- note de 1 à 5
+    body        TEXT NOT NULL,
+    created_at  TEXT NOT NULL DEFAULT (datetime('now')),
+    FOREIGN KEY (user_id) REFERENCES users(id)
+  );
 `);
+
+// Migration légère : blocage temporaire d'un auteur d'avis (date ISO ou null).
+const userCols = db.prepare(`PRAGMA table_info(users)`).all().map((c) => c.name);
+if (!userCols.includes("review_blocked_until")) {
+  db.exec(`ALTER TABLE users ADD COLUMN review_blocked_until TEXT`);
+}
 
 // Migration légère : ajoute les colonnes si une ancienne base existe déjà.
 const cols = db.prepare(`PRAGMA table_info(requests)`).all().map((c) => c.name);
