@@ -32,12 +32,23 @@ db.exec(`
   CREATE TABLE IF NOT EXISTS requests (
     id          INTEGER PRIMARY KEY AUTOINCREMENT,
     user_id     TEXT NOT NULL,
-    type        TEXT NOT NULL,           -- ex: "playermodel", "site", "bot", "autre"
+    type        TEXT NOT NULL,           -- ex: "pm_create", "site", "bot", "autre"
     message     TEXT NOT NULL,
+    deadline    TEXT,                    -- date souhaitée (YYYY-MM-DD), optionnelle
+    checklist   TEXT,                    -- options cochées (JSON), optionnelle
     status      TEXT NOT NULL DEFAULT 'nouveau',  -- nouveau / en_cours / termine
     created_at  TEXT NOT NULL DEFAULT (datetime('now')),
     FOREIGN KEY (user_id) REFERENCES users(id)
   );
 `);
+
+// Migration légère : ajoute les colonnes si une ancienne base existe déjà.
+const cols = db.prepare(`PRAGMA table_info(requests)`).all().map((c) => c.name);
+if (!cols.includes("deadline")) {
+  db.exec(`ALTER TABLE requests ADD COLUMN deadline TEXT`);
+}
+if (!cols.includes("checklist")) {
+  db.exec(`ALTER TABLE requests ADD COLUMN checklist TEXT`);
+}
 
 export default db;

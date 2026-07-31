@@ -69,4 +69,16 @@ export const site = {
     { value: "bot", label: "Créer un bot Discord" },
     { value: "autre", label: "Autre demande" },
   ],
+
+  // Cases à cocher proposées sur le formulaire de demande (précisions).
+  // Édite librement cette liste.
+  checklist: [
+    "Fournir les fichiers sources",
+    "Optimisation / compression incluse",
+    "Rig complet (visage, doigts)",
+    "Viewmodels / c_hands",
+    "Bodygroups / skins multiples",
+    "Jigglebones (cheveux, tissus...)",
+    "Livraison prioritaire (urgent)",
+  ],
 };
