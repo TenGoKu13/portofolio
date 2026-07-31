@@ -71,19 +71,22 @@ db.exec(`
   );
 `);
 
-// Migration légère : blocage temporaire d'un auteur d'avis (date ISO ou null).
-const userCols = db.prepare(`PRAGMA table_info(users)`).all().map((c) => c.name);
-if (!userCols.includes("review_blocked_until")) {
-  db.exec(`ALTER TABLE users ADD COLUMN review_blocked_until TEXT`);
+// Ajoute une colonne si elle manque, en tolérant les courses entre process
+// (le build Next collecte les pages en parallèle -> deux ALTER simultanés).
+function addColumnIfMissing(table, column, definition) {
+  const cols = db.prepare(`PRAGMA table_info(${table})`).all().map((c) => c.name);
+  if (cols.includes(column)) return;
+  try {
+    db.exec(`ALTER TABLE ${table} ADD COLUMN ${column} ${definition}`);
+  } catch (err) {
+    if (!/duplicate column name/i.test(String(err.message))) throw err;
+  }
 }
 
-// Migration légère : ajoute les colonnes si une ancienne base existe déjà.
-const cols = db.prepare(`PRAGMA table_info(requests)`).all().map((c) => c.name);
-if (!cols.includes("deadline")) {
-  db.exec(`ALTER TABLE requests ADD COLUMN deadline TEXT`);
-}
-if (!cols.includes("checklist")) {
-  db.exec(`ALTER TABLE requests ADD COLUMN checklist TEXT`);
-}
+// Migrations légères (bases existantes / neuves).
+addColumnIfMissing("users", "review_blocked_until", "TEXT");
+addColumnIfMissing("sessions", "expires_at", "TEXT");
+addColumnIfMissing("requests", "deadline", "TEXT");
+addColumnIfMissing("requests", "checklist", "TEXT");
 
 export default db;

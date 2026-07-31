@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import db from "@/lib/db";
 import { getCurrentUser } from "@/lib/session";
+import { rateLimit, clientIp, tooMany, bodyTooLarge } from "@/lib/rateLimit";
 
 // Vérifie que l'utilisateur a le droit de voir/écrire sur cette demande
 // (soit c'est sa demande, soit c'est l'admin).
@@ -49,6 +50,13 @@ export async function POST(request, { params }) {
   if (check.error) {
     return NextResponse.json({ error: check.error }, { status: check.status });
   }
+
+  if (bodyTooLarge(request, 10_000)) {
+    return NextResponse.json({ error: "Requête trop volumineuse" }, { status: 413 });
+  }
+  // Anti-spam : max 15 messages / minute par utilisateur.
+  const rl = rateLimit(`msg:${user.id}:${clientIp(request)}`, 15, 60_000);
+  if (!rl.ok) return tooMany(rl.retryAfter);
 
   const body = await request.json().catch(() => ({}));
   const text = String(body.body || "").trim().slice(0, 2000);
