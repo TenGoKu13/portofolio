@@ -2,6 +2,7 @@ import Link from "next/link";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import MessageThread from "./MessageThread";
+import RequestProgress from "./RequestProgress";
 import { Icons } from "@/components/icons";
 import db from "@/lib/db";
 import { site } from "@/data/site";
@@ -50,6 +51,13 @@ export default async function RequestThreadPage({ params }) {
     );
   }
 
+  const steps = db
+    .prepare(
+      `SELECT id, label, done, position FROM request_steps
+       WHERE request_id = ? ORDER BY position ASC, id ASC`
+    )
+    .all(request.id);
+
   const dmLink = site.discordUserId
     ? `https://discord.com/users/${site.discordUserId}`
     : null;
@@ -76,6 +84,13 @@ export default async function RequestThreadPage({ params }) {
             </p>
           )}
         </div>
+
+        <RequestProgress
+          requestId={request.id}
+          isAdmin={user.isAdmin}
+          initialSteps={steps}
+          initialDeadline={request.deadline}
+        />
 
         {/* Contacter TenGoKu directement en DM Discord */}
         {!user.isAdmin && dmLink && (
