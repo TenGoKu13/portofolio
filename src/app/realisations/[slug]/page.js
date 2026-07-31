@@ -33,7 +33,7 @@ export default function RealisationPage({ params }) {
 
       <div className="container">
         <div className="reveal in" style={{ paddingTop: 28 }}>
-          <Link href="/#realisations" className="back-link">
+          <Link href="/realisations" className="back-link">
             <span className="back-arrow">←</span> Retour aux réalisations
           </Link>
         </div>
@@ -107,7 +107,7 @@ export default function RealisationPage({ params }) {
 
         <section className="section" style={{ paddingTop: 0 }}>
           <div className="hero-actions">
-            <Link className="btn btn-ghost" href="/#realisations">
+            <Link className="btn btn-ghost" href="/realisations">
               <span className="back-arrow">←</span> Toutes les réalisations
             </Link>
             <Link className="btn" href="/demande">

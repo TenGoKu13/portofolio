@@ -62,7 +62,7 @@ export const site = {
       description:
         "Sites et applications web modernes, du portfolio à la plateforme complète.",
       tags: ["Next.js", "React", "Web"],
-      link: "#realisations",
+      link: "/realisations",
       cta: "Voir mes réalisations",
     },
   ],
