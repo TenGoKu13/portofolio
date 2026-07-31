@@ -28,11 +28,23 @@ export function rateLimit(key, limit, windowMs) {
   return { ok: true, remaining: limit - hits.length, retryAfter: 0 };
 }
 
-// Extrait l'IP client en tenant compte du reverse proxy (Nginx -> X-Forwarded-For).
+// Extrait l'IP client de façon NON falsifiable derrière le reverse proxy.
+// ⚠️ Ne JAMAIS faire confiance au premier X-Forwarded-For : il est fourni par
+// le client et se spoofe trivialement (contournement du rate-limit).
+//   1. X-Real-IP : posé par Nginx (proxy_set_header X-Real-IP $remote_addr),
+//      il écrase toute valeur cliente -> source de confiance.
+//   2. Sinon, DERNIÈRE entrée de X-Forwarded-For = IP ajoutée par le proxy
+//      ($proxy_add_x_forwarded_for), donc la seule fiable.
 export function clientIp(request) {
+  const real = request.headers.get("x-real-ip");
+  if (real) return real.trim();
+
   const xff = request.headers.get("x-forwarded-for");
-  if (xff) return xff.split(",")[0].trim();
-  return request.headers.get("x-real-ip") || "unknown";
+  if (xff) {
+    const parts = xff.split(",").map((s) => s.trim()).filter(Boolean);
+    if (parts.length) return parts[parts.length - 1];
+  }
+  return "unknown";
 }
 
 // Réponse 429 prête à l'emploi.
