@@ -63,8 +63,8 @@ export const site = {
   // Chiffres mis en avant sur l'accueil (preuve sociale).
   // "value" = nombre, "suffix" = ce qui s'affiche après (ex: "+").
   stats: [
-    { value: 20, suffix: "+", label: "Commandes livrées" },
-    { value: 15, suffix: "+", label: "Player models" },
+    { value: 25, suffix: "+", label: "Commandes livrées" },
+    { value: 20, suffix: "+", label: "Player models" },
     { value: 3, suffix: "", label: "Sites web" },
     { value: 1, suffix: "", label: "Application" },
     { value: 1, suffix: "", label: "Bot Discord" },
