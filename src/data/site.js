@@ -24,10 +24,47 @@ export const site = {
     email: "tengokutengoku963@gmail.com",
   },
 
+  // Section "À propos" + compétences (page d'accueil).
+  // Édite librement le texte et les groupes de compétences.
+  about: {
+    text: [
+      "Je crée des player models pour Garry's Mod depuis plusieurs années : création, port, rig, retexture et optimisation. À côté, je développe des sites web modernes, des bots Discord et des outils sur mesure.",
+      "Chaque projet est livré propre, optimisé et prêt à l'emploi. Besoin de quelque chose ? Envoie-moi une demande, on en discute.",
+    ],
+    skills: [
+      {
+        group: "Création 3D & GMod",
+        items: [
+          "Player models",
+          "Rig",
+          "Blender",
+          "Port de modèles",
+          "Retexture",
+          "Bodygroups",
+          "Jigglebones",
+          "Optimisation / compression",
+        ],
+      },
+      {
+        group: "Développement web",
+        items: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Node.js"],
+      },
+      {
+        group: "Bots & outils",
+        items: ["Bots Discord", "Automatisation", "APIs", "Google Sheets"],
+      },
+      {
+        group: "Hébergement",
+        items: ["VPS", "Vercel", "Nginx"],
+      },
+    ],
+  },
+
   // Chiffres mis en avant sur l'accueil (preuve sociale).
   // "value" = nombre, "suffix" = ce qui s'affiche après (ex: "+").
   stats: [
     { value: 20, suffix: "+", label: "Commandes livrées" },
+    { value: 15, suffix: "+", label: "Player models" },
     { value: 3, suffix: "", label: "Sites web" },
     { value: 1, suffix: "", label: "Application" },
     { value: 1, suffix: "", label: "Bot Discord" },

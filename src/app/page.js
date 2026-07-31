@@ -123,6 +123,42 @@ export default function Home() {
           </div>
         </section>
 
+        {site.about && (
+          <section className="section" id="a-propos">
+            <Reveal>
+              <div className="section-head">
+                <h2>À propos</h2>
+                <span className="count">// profil</span>
+              </div>
+            </Reveal>
+            <div className="about">
+              <Reveal>
+                <div className="about-text">
+                  {site.about.text.map((para, i) => (
+                    <p key={i}>{para}</p>
+                  ))}
+                </div>
+              </Reveal>
+              <Reveal delay={80}>
+                <div className="about-skills">
+                  {site.about.skills.map((s) => (
+                    <div className="skill-group" key={s.group}>
+                      <h3>{s.group}</h3>
+                      <div className="tags">
+                        {s.items.map((t) => (
+                          <span className="tag" key={t}>
+                            {t}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </Reveal>
+            </div>
+          </section>
+        )}
+
         {socials.length > 0 && (
           <section className="section" id="contact">
             <Reveal>
