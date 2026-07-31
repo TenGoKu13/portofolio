@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import db from "@/lib/db";
 import { getCurrentUser } from "@/lib/session";
+import { rateLimit, clientIp, tooMany, bodyTooLarge } from "@/lib/rateLimit";
 
 // Poster (ou mettre à jour) son avis. Connexion Discord obligatoire.
 export async function POST(request) {
@@ -8,6 +9,13 @@ export async function POST(request) {
   if (!user) {
     return NextResponse.json({ error: "Non connecté" }, { status: 401 });
   }
+
+  if (bodyTooLarge(request, 10_000)) {
+    return NextResponse.json({ error: "Requête trop volumineuse" }, { status: 413 });
+  }
+  // Anti-spam : max 5 envois d'avis / minute par utilisateur.
+  const rl = rateLimit(`review:${user.id}:${clientIp(request)}`, 5, 60_000);
+  if (!rl.ok) return tooMany(rl.retryAfter);
 
   // Blocage temporaire : refuse si la date de blocage est dans le futur.
   if (user.review_blocked_until) {
