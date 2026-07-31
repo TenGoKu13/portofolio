@@ -24,6 +24,15 @@ export const site = {
     email: "tengokutengoku963@gmail.com",
   },
 
+  // Chiffres mis en avant sur l'accueil (preuve sociale).
+  // "value" = nombre, "suffix" = ce qui s'affiche après (ex: "+").
+  stats: [
+    { value: 20, suffix: "+", label: "Commandes livrées" },
+    { value: 3, suffix: "", label: "Sites web" },
+    { value: 1, suffix: "", label: "Application" },
+    { value: 1, suffix: "", label: "Bot Discord" },
+  ],
+
   // Tes projets à mettre en avant.
   // "link" = URL cliquable (laisse "" si pas encore de lien).
   // Remplace les descriptions / liens par tes vrais projets.
