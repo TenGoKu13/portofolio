@@ -462,6 +462,7 @@ a {
   gap: 24px;
 }
 .example {
+  position: relative;
   display: grid;
   grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
   gap: 0;
@@ -473,10 +474,28 @@ a {
   -webkit-backdrop-filter: blur(12px);
   transition: transform 0.3s var(--ease-out), border-color 0.3s, box-shadow 0.3s;
 }
-.example:hover {
+/* Toute la carte est un lien cliquable */
+.example-link {
+  cursor: pointer;
+  color: inherit;
+}
+.example-link:hover {
   transform: translateY(-4px);
-  border-color: var(--border-strong);
+  border-color: var(--indigo);
   box-shadow: var(--shadow), var(--glow-indigo);
+}
+/* Liseré lumineux au survol pour signaler le clic */
+.example-link::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius);
+  border: 1px solid transparent;
+  pointer-events: none;
+  transition: border-color 0.3s;
+}
+.example-link:hover::after {
+  border-color: rgba(129, 140, 248, 0.4);
 }
 .example-cover {
   position: relative;
@@ -485,7 +504,6 @@ a {
   border: none;
   border-right: 1px solid var(--border);
   background: #060a14;
-  cursor: zoom-in;
   overflow: hidden;
   min-height: 220px;
 }
@@ -498,36 +516,44 @@ a {
   object-position: top center;
   transition: transform 0.4s var(--ease-out), opacity 0.3s;
 }
-.example-cover:hover img {
-  transform: scale(1.04);
-  opacity: 0.85;
+.example-link:hover .example-cover img {
+  transform: scale(1.05);
+  opacity: 0.9;
 }
-.example-zoom {
+/* Pastille "Voir le projet" qui apparaît sur l'image au survol */
+.example-open {
   position: absolute;
   bottom: 12px;
-  right: 12px;
+  left: 12px;
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  font-size: 0.72rem;
+  font-size: 0.74rem;
   font-weight: 700;
   color: #fff;
-  background: rgba(11, 17, 32, 0.7);
-  border: 1px solid var(--border-strong);
+  background: rgba(99, 102, 241, 0.85);
+  border: 1px solid rgba(129, 140, 248, 0.6);
   border-radius: 999px;
-  padding: 6px 12px;
+  padding: 7px 14px;
   opacity: 0;
-  transform: translateY(6px);
+  transform: translateY(8px);
   transition: opacity 0.25s, transform 0.25s;
+  box-shadow: var(--glow-indigo);
   backdrop-filter: blur(6px);
 }
-.example-cover:hover .example-zoom {
+.example-open svg {
+  width: 14px;
+  height: 14px;
+}
+.example-link:hover .example-open {
   opacity: 1;
   transform: none;
 }
 .example-body {
   padding: 26px;
   min-width: 0;
+  display: flex;
+  flex-direction: column;
 }
 .example-head {
   display: flex;
@@ -559,18 +585,44 @@ a {
   font-size: 0.9rem;
   margin: 12px 0 14px;
 }
+/* "Découvrir le projet →" en bas de carte : indice de clic permanent */
+.example-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: auto;
+  padding-top: 16px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--indigo);
+  transition: gap 0.25s, color 0.25s;
+}
+.example-cta svg {
+  width: 16px;
+  height: 16px;
+  transition: transform 0.25s;
+}
+.example-link:hover .example-cta {
+  color: #fff;
+  gap: 12px;
+}
+.example-link:hover .example-cta svg {
+  transform: translate(3px, -3px);
+}
+
+/* Listes de fonctionnalités (partagé avec la page de détail) */
 .example-features {
   list-style: none;
   padding: 0;
-  margin: 0 0 4px;
+  margin: 0;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-  gap: 6px 16px;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 8px 16px;
 }
 .example-features li {
   position: relative;
   padding-left: 18px;
-  font-size: 0.82rem;
+  font-size: 0.86rem;
   color: var(--muted);
 }
 .example-features li::before {
@@ -579,32 +631,132 @@ a {
   left: 0;
   color: var(--indigo);
 }
-.example-thumbs {
-  display: flex;
-  gap: 10px;
-  margin-top: 14px;
-  flex-wrap: wrap;
+
+/* ---------------- Page détail réalisation ---------------- */
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.86rem;
+  color: var(--muted);
+  transition: color 0.2s, gap 0.2s;
 }
-.example-thumb {
+.back-link:hover {
+  color: var(--text);
+  gap: 12px;
+}
+.back-arrow {
+  display: inline-block;
+  font-size: 1rem;
+}
+.project-hero {
+  padding: 28px 0 20px;
+}
+.project-head .badge {
+  background: rgba(34, 197, 94, 0.12);
+  border-color: rgba(34, 197, 94, 0.3);
+  color: var(--green);
+}
+.project-head h1 {
+  font-family: var(--font-display);
+  font-size: clamp(1.9rem, 5vw, 3rem);
+  font-weight: 900;
+  line-height: 1.1;
+  margin: 6px 0 10px;
+  background: linear-gradient(180deg, #fff 30%, #94a3b8);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.project-sub {
+  color: var(--indigo);
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  margin: 0;
+}
+.project-desc {
+  color: var(--muted);
+  font-size: 1.02rem;
+  max-width: 760px;
+  margin: 20px 0 0;
+}
+.project-cols {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 20px;
+}
+.project-panel {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 26px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  height: 100%;
+}
+.panel-title {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin: 0 0 18px;
+}
+
+/* Galerie d'aperçus (page détail) */
+.pg-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+}
+.pg-item {
+  position: relative;
   padding: 0;
   border: 1px solid var(--border);
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius);
   overflow: hidden;
   cursor: zoom-in;
   background: #060a14;
-  width: 92px;
-  height: 58px;
-  transition: border-color 0.2s, transform 0.2s;
+  transition: transform 0.3s var(--ease-out), border-color 0.3s, box-shadow 0.3s;
 }
-.example-thumb img {
+.pg-item img {
+  display: block;
   width: 100%;
   height: 100%;
+  max-height: 260px;
   object-fit: cover;
   object-position: top center;
+  transition: transform 0.4s var(--ease-out), opacity 0.3s;
 }
-.example-thumb:hover {
+.pg-item:hover {
   border-color: var(--indigo);
-  transform: translateY(-2px);
+  box-shadow: var(--glow-indigo);
+}
+.pg-item:hover img {
+  transform: scale(1.04);
+  opacity: 0.9;
+}
+.pg-zoom {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: #fff;
+  background: rgba(11, 17, 32, 0.7);
+  border: 1px solid var(--border-strong);
+  border-radius: 999px;
+  padding: 5px 11px;
+  opacity: 0;
+  transition: opacity 0.25s;
+  backdrop-filter: blur(6px);
+}
+.pg-item:hover .pg-zoom {
+  opacity: 1;
+}
+
+@media (max-width: 760px) {
+  .project-cols {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* Lightbox plein écran */

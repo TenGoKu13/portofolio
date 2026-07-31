@@ -56,31 +56,13 @@ export const site = {
       link: "",
     },
     {
-      title: "Site — Projet 1",
+      title: "Sites web sur mesure",
       category: "Site web",
-      status: "En ligne",
+      status: "Sur demande",
       description:
-        "Remplace ce texte par le nom et la description de ton 1er site. Ajoute le lien dans \"link\" pour le rendre cliquable.",
-      tags: ["Next.js", "Web"],
-      link: "",
-    },
-    {
-      title: "Site — Projet 2",
-      category: "Site web",
-      status: "En ligne",
-      description:
-        "Remplace ce texte par le nom et la description de ton 2e site.",
-      tags: ["Web"],
-      link: "",
-    },
-    {
-      title: "Site — Projet 3",
-      category: "Site web",
-      status: "En ligne",
-      description:
-        "Remplace ce texte par le nom et la description de ton 3e site.",
-      tags: ["Web"],
-      link: "",
+        "Sites et applications web modernes, du portfolio à la plateforme complète. Voir mes réalisations plus bas.",
+      tags: ["Next.js", "React", "Web"],
+      link: "#realisations",
     },
   ],
 
@@ -90,6 +72,7 @@ export const site = {
   // Dépose les images dans public/examples/ et référence-les ici.
   webExamples: [
     {
+      slug: "ait-medical-corps",
       title: "AIT Medical Corps — Gestion VM",
       subtitle: "Plateforme médicale RP tout-en-un",
       status: "Réalisé",
@@ -120,6 +103,7 @@ export const site = {
       link: "",
     },
     {
+      slug: "rapport-ingenieur",
       title: "Système Rapport Ingénieur",
       subtitle: "Suivi hebdomadaire des ingénieurs de combat",
       status: "Réalisé",
@@ -151,6 +135,7 @@ export const site = {
       link: "",
     },
     {
+      slug: "ciapt",
       title: "Gestion CIAPT",
       subtitle: "Inscriptions & certifications",
       status: "Réalisé",

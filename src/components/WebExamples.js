@@ -1,14 +1,10 @@
-"use client";
-
-import { useState } from "react";
+import Link from "next/link";
 import Reveal from "@/components/Reveal";
 import { Icons } from "@/components/icons";
 
-// Galerie "Réalisations web" : une carte par site avec cover cliquable,
-// description, stack et fonctionnalités. Clic sur une image => lightbox.
+// Galerie "Réalisations web" : une carte cliquable par site.
+// Le clic mène à la page de détail /realisations/[slug].
 export default function WebExamples({ examples = [] }) {
-  const [lightbox, setLightbox] = useState(null); // { src, title } | null
-
   if (!examples.length) return null;
 
   return (
@@ -22,20 +18,15 @@ export default function WebExamples({ examples = [] }) {
 
       <div className="examples">
         {examples.map((ex, i) => (
-          <Reveal key={ex.title} delay={i * 80}>
-            <article className="example">
-              <button
-                type="button"
-                className="example-cover"
-                onClick={() => setLightbox({ src: ex.cover, title: ex.title })}
-                aria-label={`Agrandir la capture de ${ex.title}`}
-              >
+          <Reveal key={ex.slug || ex.title} delay={i * 80}>
+            <Link className="example example-link" href={`/realisations/${ex.slug}`}>
+              <div className="example-cover">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img src={ex.cover} alt={`Capture du site ${ex.title}`} loading="lazy" />
-                <span className="example-zoom">
-                  <Icons.arrow /> Agrandir
+                <span className="example-open">
+                  Voir le projet <Icons.arrow />
                 </span>
-              </button>
+              </div>
 
               <div className="example-body">
                 <div className="example-head">
@@ -48,83 +39,27 @@ export default function WebExamples({ examples = [] }) {
 
                 <p className="example-desc">{ex.description}</p>
 
-                {ex.features?.length > 0 && (
-                  <ul className="example-features">
-                    {ex.features.map((f) => (
-                      <li key={f}>{f}</li>
-                    ))}
-                  </ul>
-                )}
-
-                {ex.shots?.length > 1 && (
-                  <div className="example-thumbs">
-                    {ex.shots.map((s) => (
-                      <button
-                        type="button"
-                        key={s}
-                        className="example-thumb"
-                        onClick={() => setLightbox({ src: s, title: ex.title })}
-                        aria-label={`Agrandir une capture de ${ex.title}`}
-                      >
-                        {/* eslint-disable-next-line @next/next/no-img-element */}
-                        <img src={s} alt={`Capture de ${ex.title}`} loading="lazy" />
-                      </button>
-                    ))}
-                  </div>
-                )}
-
                 {ex.stack?.length > 0 && (
-                  <div className="tags" style={{ marginTop: 16 }}>
-                    {ex.stack.map((t) => (
+                  <div className="tags" style={{ marginTop: 14 }}>
+                    {ex.stack.slice(0, 5).map((t) => (
                       <span className="tag" key={t}>
                         {t}
                       </span>
                     ))}
+                    {ex.stack.length > 5 && (
+                      <span className="tag">+{ex.stack.length - 5}</span>
+                    )}
                   </div>
                 )}
 
-                {ex.link && (
-                  <p style={{ marginTop: 16, marginBottom: 0 }}>
-                    <a
-                      className="btn btn-ghost"
-                      href={ex.link}
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      Voir le site <Icons.arrow />
-                    </a>
-                  </p>
-                )}
+                <span className="example-cta">
+                  Découvrir le projet <Icons.arrow />
+                </span>
               </div>
-            </article>
+            </Link>
           </Reveal>
         ))}
       </div>
-
-      {lightbox && (
-        <div
-          className="lightbox"
-          role="dialog"
-          aria-modal="true"
-          aria-label={lightbox.title}
-          onClick={() => setLightbox(null)}
-        >
-          <button
-            type="button"
-            className="lightbox-close"
-            aria-label="Fermer"
-            onClick={() => setLightbox(null)}
-          >
-            ✕
-          </button>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src={lightbox.src}
-            alt={`Capture du site ${lightbox.title}`}
-            onClick={(e) => e.stopPropagation()}
-          />
-        </div>
-      )}
     </section>
   );
 }
