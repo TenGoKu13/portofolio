@@ -39,4 +39,9 @@ export const Icons = {
       <path d="M12 7v5l3 2" />
     </svg>
   ),
+  star: (p) => (
+    <svg {...base} fill="currentColor" {...p}>
+      <path d="m12 2 2.9 6.26 6.85.7-5.1 4.6 1.44 6.74L12 17.77 5.91 21.3l1.44-6.74-5.1-4.6 6.85-.7L12 2Z" />
+    </svg>
+  ),
 };

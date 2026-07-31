@@ -4,6 +4,7 @@ import Footer from "@/components/Footer";
 import Reveal from "@/components/Reveal";
 import Avatar from "@/components/Avatar";
 import Stats from "@/components/Stats";
+import Reviews from "@/components/Reviews";
 import { Icons } from "@/components/icons";
 import { site } from "@/data/site";
 
@@ -158,6 +159,8 @@ export default function Home() {
             </div>
           </section>
         )}
+
+        <Reviews />
 
         {socials.length > 0 && (
           <section className="section" id="contact">

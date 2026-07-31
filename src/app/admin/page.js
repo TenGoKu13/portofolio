@@ -1,6 +1,7 @@
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import AdminTable from "./AdminTable";
+import AdminReviews from "./AdminReviews";
 import db from "@/lib/db";
 import { site } from "@/data/site";
 import { getCurrentUser } from "@/lib/session";
@@ -37,6 +38,14 @@ export default async function AdminPage() {
     )
     .all();
 
+  const reviews = db
+    .prepare(
+      `SELECT r.*, u.username, u.global_name, u.review_blocked_until
+       FROM reviews r JOIN users u ON u.id = r.user_id
+       ORDER BY r.created_at DESC`
+    )
+    .all();
+
   return (
     <>
       <Nav />
@@ -50,6 +59,12 @@ export default async function AdminPage() {
         ) : (
           <AdminTable requests={requests} typeLabels={TYPE_LABELS} />
         )}
+
+        <div className="section-head" style={{ marginTop: 48 }}>
+          <h2>Avis clients</h2>
+          <span className="count">// {reviews.length}</span>
+        </div>
+        <AdminReviews reviews={reviews} />
       </main>
       <div className="container">
         <Footer />
