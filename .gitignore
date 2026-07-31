@@ -1,0 +1,28 @@
+# dependencies
+/node_modules
+
+# next.js
+/.next/
+/out/
+
+# production
+/build
+
+# base de données locale (SQLite)
+/data/*.db
+/data/*.db-*
+
+# env
+.env
+.env.local
+
+# logs
+*.log
+npm-debug.log*
+
+# os
+.DS_Store
+
+# python cache (skills)
+__pycache__/
+*.pyc
