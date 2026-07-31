@@ -58,16 +58,17 @@ export const site = {
   ],
 
   // Types de demandes proposés dans le formulaire.
+  // "eta" = temps estimé de réalisation (indicatif, affiché sur le formulaire).
   requestTypes: [
-    { value: "pm_create", label: "Créer un player model (GMod)" },
-    { value: "pm_modify", label: "Modifier / éditer un player model" },
-    { value: "pm_compress", label: "Compresser / optimiser un player model" },
-    { value: "pm_port", label: "Porter un modèle vers GMod" },
-    { value: "pm_rig", label: "Rig / animation d'un player model" },
-    { value: "pm_texture", label: "Retexture / reskin d'un player model" },
-    { value: "site", label: "Faire un site web" },
-    { value: "bot", label: "Créer un bot Discord" },
-    { value: "autre", label: "Autre demande" },
+    { value: "pm_create", label: "Créer un player model (GMod)", eta: "~ 2 à 3 jours" },
+    { value: "pm_modify", label: "Modifier / éditer un player model", eta: "~ 1 jour" },
+    { value: "pm_compress", label: "Compresser / optimiser un player model", eta: "~ 1 heure" },
+    { value: "pm_port", label: "Porter un modèle vers GMod", eta: "~ 1 à 2 jours" },
+    { value: "pm_rig", label: "Rig / animation d'un player model", eta: "~ 1 à 2 jours" },
+    { value: "pm_texture", label: "Retexture / reskin d'un player model", eta: "~ 1 jour" },
+    { value: "site", label: "Faire un site web", eta: "~ 3 à 7 jours" },
+    { value: "bot", label: "Créer un bot Discord", eta: "~ 2 à 5 jours" },
+    { value: "autre", label: "Autre demande", eta: "à définir ensemble" },
   ],
 
   // Cases à cocher proposées sur le formulaire de demande (précisions).

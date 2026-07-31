@@ -1,9 +1,11 @@
 "use client";
 
 import { useState } from "react";
+import { Icons } from "@/components/icons";
 
 export default function RequestForm({ types, checklist = [] }) {
   const [type, setType] = useState(types[0]?.value || "");
+  const currentEta = types.find((t) => t.value === type)?.eta;
   const [message, setMessage] = useState("");
   const [deadline, setDeadline] = useState("");
   const [checked, setChecked] = useState([]);
@@ -67,6 +69,15 @@ export default function RequestForm({ types, checklist = [] }) {
           </option>
         ))}
       </select>
+
+      {currentEta && (
+        <div className="eta">
+          <Icons.clock width={16} height={16} />
+          <span>
+            Temps estimé : <strong>{currentEta}</strong>
+          </span>
+        </div>
+      )}
 
       <label htmlFor="deadline">Date souhaitée (deadline) — optionnel</label>
       <input
