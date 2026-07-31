@@ -381,11 +381,41 @@ a {
 .card:hover::before {
   opacity: 1;
 }
+.card-link {
+  display: block;
+  cursor: pointer;
+}
+.card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+.card-cat {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: var(--muted-dim);
+}
 .card h3 {
   font-family: var(--font-display);
-  margin: 0 0 8px;
+  margin: 12px 0 8px;
   font-size: 1.2rem;
   font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.card h3 svg {
+  color: var(--indigo);
+  opacity: 0;
+  transform: translate(-4px, 0);
+  transition: opacity 0.2s, transform 0.2s;
+}
+.card-link:hover h3 svg {
+  opacity: 1;
+  transform: none;
 }
 .badge {
   display: inline-flex;
@@ -602,16 +632,170 @@ input:focus {
   color: #bbf7d0;
 }
 .footer {
-  padding: 44px 0;
+  padding: 40px 0;
   color: var(--muted-dim);
   font-size: 0.82rem;
   text-align: center;
   border-top: 1px solid var(--border);
   margin-top: 60px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+}
+.footer-links {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.footer-links a:hover {
+  color: var(--text);
+}
+.footer-links .sep {
+  opacity: 0.5;
+}
+.footer-made {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 600;
+  color: var(--muted);
+  letter-spacing: 0.3px;
 }
 .center-narrow {
   padding: 70px 0;
   text-align: center;
+}
+
+/* Liste "Mes demandes" */
+.req-list {
+  display: grid;
+  gap: 12px;
+}
+.req-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 16px 18px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  transition: border-color 0.2s, transform 0.2s;
+}
+.req-row:hover {
+  border-color: var(--indigo);
+  transform: translateY(-1px);
+}
+.req-row-right {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.req-open {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  color: var(--indigo);
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+/* Fil de discussion (messagerie) */
+.thread {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  overflow: hidden;
+}
+.thread-list {
+  padding: 20px;
+  max-height: 460px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.msg {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  max-width: 85%;
+}
+.msg.mine {
+  flex-direction: row-reverse;
+  align-self: flex-end;
+}
+.msg-avatar {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 1px solid var(--border-strong);
+  flex-shrink: 0;
+}
+.msg-bubble {
+  background: var(--bg-2);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 10px 14px;
+}
+.msg.mine .msg-bubble {
+  background: rgba(99, 102, 241, 0.14);
+  border-color: rgba(99, 102, 241, 0.3);
+}
+.msg-head {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-bottom: 4px;
+  font-size: 0.82rem;
+}
+.msg-time {
+  color: var(--muted-dim);
+  font-size: 0.72rem;
+}
+.msg-body {
+  font-size: 0.92rem;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+.thread-form {
+  display: flex;
+  gap: 10px;
+  padding: 14px;
+  border-top: 1px solid var(--border);
+  background: var(--bg-2);
+}
+.thread-form input {
+  flex: 1;
+}
+
+/* Pages légales (Terms / Privacy) */
+.legal {
+  max-width: 760px;
+}
+.legal h2 {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  margin: 32px 0 10px;
+  color: var(--text);
+}
+.legal p,
+.legal li {
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+.legal ul {
+  padding-left: 20px;
+}
+.legal a {
+  color: var(--indigo);
+  text-decoration: underline;
+}
+.legal .updated {
+  color: var(--muted-dim);
+  font-size: 0.85rem;
+  margin-bottom: 8px;
 }
 
 /* ---------------- Reveal au scroll ---------------- */

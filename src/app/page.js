@@ -60,40 +60,46 @@ export default function Home() {
             </div>
           </Reveal>
           <div className="grid">
-            {site.projects.map((p, i) => (
-              <Reveal key={p.title} delay={i * 80}>
-                <article className="card">
-                  <span
-                    className={`badge ${
-                      /bient/i.test(p.status) ? "soon" : ""
-                    }`}
+            {site.projects.map((p, i) => {
+              const clickable = Boolean(p.link);
+              const Card = clickable ? "a" : "article";
+              const linkProps = clickable
+                ? { href: p.link, target: "_blank", rel: "noreferrer" }
+                : {};
+              return (
+                <Reveal key={p.title} delay={i * 60}>
+                  <Card
+                    className={`card ${clickable ? "card-link" : ""}`}
+                    {...linkProps}
                   >
-                    {p.status}
-                  </span>
-                  <h3>{p.title}</h3>
-                  <p>{p.description}</p>
-                  <div className="tags">
-                    {p.tags.map((t) => (
-                      <span className="tag" key={t}>
-                        {t}
-                      </span>
-                    ))}
-                  </div>
-                  {p.link && (
-                    <p style={{ marginTop: 16, marginBottom: 0 }}>
-                      <a
-                        className="btn btn-ghost"
-                        href={p.link}
-                        target="_blank"
-                        rel="noreferrer"
+                    <div className="card-top">
+                      <span
+                        className={`badge ${
+                          /bient/i.test(p.status) ? "soon" : ""
+                        }`}
                       >
-                        Voir <Icons.arrow />
-                      </a>
-                    </p>
-                  )}
-                </article>
-              </Reveal>
-            ))}
+                        {p.status}
+                      </span>
+                      {p.category && (
+                        <span className="card-cat">{p.category}</span>
+                      )}
+                    </div>
+                    <h3>
+                      {p.title}
+                      {clickable && <Icons.arrow width={16} height={16} />}
+                    </h3>
+                    <p>{p.description}</p>
+                    <div className="tags">
+                      {p.tags.map((t) => (
+                        <span className="tag" key={t}>
+                          {t}
+                        </span>
+                      ))}
+                    </div>
+                  </Card>
+                </Reveal>
+              );
+            })}
           </div>
         </section>
 

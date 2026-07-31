@@ -12,6 +12,9 @@ export const site = {
   // chemin ici, ex: "/avatar.png". Laisse "" pour afficher une initiale.
   avatar: "/avatar.jpg",
 
+  // Ton ID Discord : sert au bouton "Me contacter en DM" sur les demandes.
+  discordUserId: "806590748791144448",
+
   // Tes liens (mets tes vraies URLs). Laisse vide "" pour cacher un lien.
   socials: {
     github: "https://github.com/tengoku13",
@@ -22,9 +25,21 @@ export const site = {
   },
 
   // Tes projets à mettre en avant.
+  // "link" = URL cliquable (laisse "" si pas encore de lien).
+  // Remplace les descriptions / liens par tes vrais projets.
   projects: [
     {
+      title: "Compresseur de Player Models",
+      category: "Application",
+      status: "Bientôt disponible",
+      description:
+        "Mon app qui compresse et optimise les player models pour réduire leur taille et améliorer les performances, sans perte visible de qualité.",
+      tags: ["Optimisation", "Player Models", "App"],
+      link: "",
+    },
+    {
       title: "Player Models GMod",
+      category: "Garry's Mod",
       status: "Actif",
       description:
         "Création, port et rig de player models sur mesure pour Garry's Mod : personnages, skins, viewmodels, prêts à l'emploi et optimisés.",
@@ -32,27 +47,39 @@ export const site = {
       link: "",
     },
     {
-      title: "Compresseur de Player Models",
-      status: "Bientôt disponible",
-      description:
-        "Une app qui compresse et optimise les player models pour réduire leur taille et améliorer les performances, sans perte visible de qualité.",
-      tags: ["Optimisation", "Player Models", "App"],
-      link: "",
-    },
-    {
       title: "Bots Discord",
+      category: "Bots",
       status: "Actif",
       description:
-        "Développement de bots Discord sur mesure : modération, automatisation, systèmes de tickets, intégrations.",
+        "Bots Discord sur mesure : modération, automatisation, systèmes de tickets, intégrations.",
       tags: ["Discord", "Node.js", "Automatisation"],
       link: "",
     },
     {
-      title: "Sites web sur mesure",
-      status: "Sur demande",
+      title: "Site — Projet 1",
+      category: "Site web",
+      status: "En ligne",
       description:
-        "Création de sites web modernes et responsives, du portfolio à l'application web complète.",
-      tags: ["Next.js", "React", "Web"],
+        "Remplace ce texte par le nom et la description de ton 1er site. Ajoute le lien dans \"link\" pour le rendre cliquable.",
+      tags: ["Next.js", "Web"],
+      link: "",
+    },
+    {
+      title: "Site — Projet 2",
+      category: "Site web",
+      status: "En ligne",
+      description:
+        "Remplace ce texte par le nom et la description de ton 2e site.",
+      tags: ["Web"],
+      link: "",
+    },
+    {
+      title: "Site — Projet 3",
+      category: "Site web",
+      status: "En ligne",
+      description:
+        "Remplace ce texte par le nom et la description de ton 3e site.",
+      tags: ["Web"],
       link: "",
     },
   ],
@@ -82,4 +109,12 @@ export const site = {
     "Jigglebones (cheveux, tissus...)",
     "Livraison prioritaire (urgent)",
   ],
+
+  // Infos utilisées par le footer et les pages légales (Terms / Privacy).
+  legal: {
+    country: "Suisse",
+    madeIn: "Made in Switzerland",
+    contactEmail: "tengokutengoku963@gmail.com",
+    lastUpdated: "2026-07-31",
+  },
 };
