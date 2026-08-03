@@ -116,6 +116,36 @@ body {
   mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 40%, transparent 100%);
 }
 
+/* Scanlines HUD (survival-horror) — très discret, ne change pas la palette */
+.scanlines {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(148, 163, 184, 0.035) 0 1px,
+    transparent 1px 3px
+  );
+  opacity: 0.6;
+}
+
+/* Crochets d'angle « viseur » réutilisables (détail tactique) */
+.hud-corners {
+  --hud-c: rgba(129, 140, 248, 0.4);
+  --hud-s: 12px;
+  --hud-t: 1.5px;
+  background:
+    linear-gradient(var(--hud-c), var(--hud-c)) 0 0 / var(--hud-s) var(--hud-t) no-repeat,
+    linear-gradient(var(--hud-c), var(--hud-c)) 0 0 / var(--hud-t) var(--hud-s) no-repeat,
+    linear-gradient(var(--hud-c), var(--hud-c)) 100% 0 / var(--hud-s) var(--hud-t) no-repeat,
+    linear-gradient(var(--hud-c), var(--hud-c)) 100% 0 / var(--hud-t) var(--hud-s) no-repeat,
+    linear-gradient(var(--hud-c), var(--hud-c)) 0 100% / var(--hud-s) var(--hud-t) no-repeat,
+    linear-gradient(var(--hud-c), var(--hud-c)) 0 100% / var(--hud-t) var(--hud-s) no-repeat,
+    linear-gradient(var(--hud-c), var(--hud-c)) 100% 100% / var(--hud-s) var(--hud-t) no-repeat,
+    linear-gradient(var(--hud-c), var(--hud-c)) 100% 100% / var(--hud-t) var(--hud-s) no-repeat;
+}
+
 a {
   color: inherit;
   text-decoration: none;
@@ -331,6 +361,7 @@ a {
   margin: 8px 0 20px;
 }
 .stat {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -344,10 +375,33 @@ a {
   -webkit-backdrop-filter: blur(12px);
   transition: transform 0.3s var(--ease-out), border-color 0.3s, box-shadow 0.3s;
 }
+/* Crochets d'angle « viseur » sur les tuiles de stats */
+.stat::after {
+  content: "";
+  position: absolute;
+  inset: 7px;
+  pointer-events: none;
+  --hud-c: rgba(129, 140, 248, 0.3);
+  --hud-s: 11px;
+  --hud-t: 1.5px;
+  background:
+    linear-gradient(var(--hud-c), var(--hud-c)) 0 0 / var(--hud-s) var(--hud-t) no-repeat,
+    linear-gradient(var(--hud-c), var(--hud-c)) 0 0 / var(--hud-t) var(--hud-s) no-repeat,
+    linear-gradient(var(--hud-c), var(--hud-c)) 100% 0 / var(--hud-s) var(--hud-t) no-repeat,
+    linear-gradient(var(--hud-c), var(--hud-c)) 100% 0 / var(--hud-t) var(--hud-s) no-repeat,
+    linear-gradient(var(--hud-c), var(--hud-c)) 0 100% / var(--hud-s) var(--hud-t) no-repeat,
+    linear-gradient(var(--hud-c), var(--hud-c)) 0 100% / var(--hud-t) var(--hud-s) no-repeat,
+    linear-gradient(var(--hud-c), var(--hud-c)) 100% 100% / var(--hud-s) var(--hud-t) no-repeat,
+    linear-gradient(var(--hud-c), var(--hud-c)) 100% 100% / var(--hud-t) var(--hud-s) no-repeat;
+  transition: opacity 0.3s;
+}
 .stat:hover {
   transform: translateY(-3px);
   border-color: var(--border-strong);
   box-shadow: var(--glow-indigo);
+}
+.stat:hover::after {
+  --hud-c: rgba(129, 140, 248, 0.7);
 }
 .stat-value {
   font-family: var(--font-display);
@@ -467,6 +521,30 @@ a {
   box-shadow: var(--shadow), var(--glow-indigo);
 }
 .card:hover::before {
+  opacity: 1;
+}
+/* Crochets d'angle « viseur » qui apparaissent au survol des cartes */
+.card::after {
+  content: "";
+  position: absolute;
+  inset: 8px;
+  pointer-events: none;
+  opacity: 0;
+  --hud-c: rgba(129, 140, 248, 0.6);
+  --hud-s: 14px;
+  --hud-t: 1.5px;
+  background:
+    linear-gradient(var(--hud-c), var(--hud-c)) 0 0 / var(--hud-s) var(--hud-t) no-repeat,
+    linear-gradient(var(--hud-c), var(--hud-c)) 0 0 / var(--hud-t) var(--hud-s) no-repeat,
+    linear-gradient(var(--hud-c), var(--hud-c)) 100% 0 / var(--hud-s) var(--hud-t) no-repeat,
+    linear-gradient(var(--hud-c), var(--hud-c)) 100% 0 / var(--hud-t) var(--hud-s) no-repeat,
+    linear-gradient(var(--hud-c), var(--hud-c)) 0 100% / var(--hud-s) var(--hud-t) no-repeat,
+    linear-gradient(var(--hud-c), var(--hud-c)) 0 100% / var(--hud-t) var(--hud-s) no-repeat,
+    linear-gradient(var(--hud-c), var(--hud-c)) 100% 100% / var(--hud-s) var(--hud-t) no-repeat,
+    linear-gradient(var(--hud-c), var(--hud-c)) 100% 100% / var(--hud-t) var(--hud-s) no-repeat;
+  transition: opacity 0.3s;
+}
+.card:hover::after {
   opacity: 1;
 }
 .card-link {
@@ -1414,6 +1492,27 @@ input:focus {
   flex-direction: column;
   gap: 10px;
   align-items: center;
+}
+.footer-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.68rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--muted-dim);
+  padding: 5px 14px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  margin-bottom: 4px;
+}
+.footer-status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--green);
+  box-shadow: 0 0 8px var(--green);
+  animation: pulse 2s infinite;
 }
 .footer-links {
   display: flex;
