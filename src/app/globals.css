@@ -116,7 +116,7 @@ body {
   mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 40%, transparent 100%);
 }
 
-/* Scanlines HUD (survival-horror) — très discret, ne change pas la palette */
+/* Scanlines HUD (survival-horror) — ne change pas la palette */
 .scanlines {
   position: fixed;
   inset: 0;
@@ -124,10 +124,59 @@ body {
   pointer-events: none;
   background: repeating-linear-gradient(
     to bottom,
-    rgba(148, 163, 184, 0.035) 0 1px,
+    rgba(148, 163, 184, 0.07) 0 1px,
     transparent 1px 3px
   );
-  opacity: 0.6;
+  opacity: 0.9;
+}
+
+/* ---------------- Barre de statut HUD (haut de page) ---------------- */
+.hudbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 8px 24px;
+  font-size: 0.68rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--indigo);
+  font-family: var(--font-mono);
+  border-bottom: 1px solid var(--border);
+}
+.hudbar-left,
+.hudbar-right {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+}
+.hudbar-right {
+  font-variant-numeric: tabular-nums;
+  color: var(--green);
+}
+.hudbar-dim {
+  color: var(--muted-dim);
+}
+.hudbar-sep {
+  color: var(--muted-dim);
+}
+.hudbar-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--green);
+  box-shadow: 0 0 8px var(--green);
+  animation: pulse 2s infinite;
+}
+@media (max-width: 520px) {
+  .hudbar {
+    font-size: 0.6rem;
+    letter-spacing: 1px;
+    padding: 7px 16px;
+  }
 }
 
 /* Crochets d'angle « viseur » réutilisables (détail tactique) */
@@ -381,8 +430,8 @@ a {
   position: absolute;
   inset: 7px;
   pointer-events: none;
-  --hud-c: rgba(129, 140, 248, 0.3);
-  --hud-s: 11px;
+  --hud-c: rgba(129, 140, 248, 0.55);
+  --hud-s: 12px;
   --hud-t: 1.5px;
   background:
     linear-gradient(var(--hud-c), var(--hud-c)) 0 0 / var(--hud-s) var(--hud-t) no-repeat,
@@ -436,11 +485,26 @@ a {
   margin-bottom: 30px;
 }
 .section-head h2 {
+  position: relative;
+  padding-left: 16px;
   font-family: var(--font-display);
   font-size: clamp(1.4rem, 3.5vw, 2rem);
   font-weight: 700;
   margin: 0;
   letter-spacing: 0.5px;
+}
+/* Barre d'accent tactique devant chaque titre de section */
+.section-head h2::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 0.85em;
+  border-radius: 2px;
+  background: linear-gradient(180deg, var(--indigo-strong), var(--green));
+  box-shadow: 0 0 10px -2px var(--indigo-strong);
 }
 .section-head .count {
   color: var(--indigo);
@@ -523,14 +587,14 @@ a {
 .card:hover::before {
   opacity: 1;
 }
-/* Crochets d'angle « viseur » qui apparaissent au survol des cartes */
+/* Crochets d'angle « viseur » sur les cartes (toujours visibles) */
 .card::after {
   content: "";
   position: absolute;
   inset: 8px;
   pointer-events: none;
-  opacity: 0;
-  --hud-c: rgba(129, 140, 248, 0.6);
+  opacity: 0.45;
+  --hud-c: rgba(129, 140, 248, 0.65);
   --hud-s: 14px;
   --hud-t: 1.5px;
   background:
