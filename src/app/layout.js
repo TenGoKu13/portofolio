@@ -1,6 +1,7 @@
 import "./globals.css";
 import { site } from "@/data/site";
 import Ambient from "@/components/Ambient";
+import HudBar from "@/components/HudBar";
 
 const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://tengoku.ch";
 
@@ -47,6 +48,7 @@ export default function RootLayout({ children }) {
       </head>
       <body>
         <Ambient />
+        <HudBar />
         {children}
       </body>
     </html>
