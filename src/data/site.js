@@ -90,7 +90,8 @@ export const site = {
       description:
         "Création, port et rig de player models sur mesure pour Garry's Mod : personnages, skins, viewmodels, prêts à l'emploi et optimisés.",
       tags: ["Garry's Mod", "Player Models", "3D", "Rig"],
-      link: "",
+      link: "/player-models",
+      cta: "Voir la galerie",
     },
     {
       title: "Bots Discord",
@@ -223,6 +224,15 @@ export const site = {
     { value: "site", label: "Faire un site web", eta: "~ 3 à 7 jours" },
     { value: "bot", label: "Créer un bot Discord", eta: "~ 2 à 5 jours" },
     { value: "autre", label: "Autre demande", eta: "à définir ensemble" },
+  ],
+
+  // 🎮 Galerie Player Models (page /player-models).
+  // Dépose tes rendus dans public/player-models/ puis ajoute une entrée ici.
+  // Chaque entrée : image (obligatoire), title, tags (facultatifs).
+  // Exemple :
+  //   { image: "/player-models/goku.jpg", title: "Goku custom", tags: ["Rig", "Bodygroups"] },
+  playerModels: [
+    // ↓ Ajoute tes player models ici (supprime ce commentaire quand c'est fait)
   ],
 
   // Cases à cocher proposées sur le formulaire de demande (précisions).
