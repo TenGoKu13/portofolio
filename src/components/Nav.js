@@ -23,7 +23,9 @@ export default async function Nav() {
       </Link>
       <div className="nav-links">
         <Link href="/#projets">Projets</Link>
-        <Link href="/player-models">Player Models</Link>
+        {site.playerModels?.length > 0 && (
+          <Link href="/player-models">Player Models</Link>
+        )}
         <Link href="/realisations">Réalisations</Link>
         <Link href="/#avis">Avis</Link>
         <Link href="/demande">Demande</Link>
