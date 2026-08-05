@@ -2,12 +2,10 @@
 
 import { useEffect, useRef } from "react";
 
-// Dès que ce module s'exécute côté navigateur, on arme l'animation d'apparition.
-// Tant que cette classe n'est pas posée, `.reveal` reste visible (cf. globals.css) :
-// si le JS ne tourne pas, la page s'affiche quand même au lieu d'être blanche.
-if (typeof document !== "undefined") {
-  document.documentElement.classList.add("reveal-on");
-}
+// L'armement de l'animation (classe `reveal-on` sur <html>) est posé très tôt
+// par un script inline dans le <head> (cf. layout.js), AVANT le premier rendu,
+// pour éviter tout clignotement. Un filet de sécurité y ré-affiche le contenu
+// si le JS ne prend jamais la main (page blanche évitée).
 
 // Anime l'apparition d'un bloc quand il entre dans le viewport (stagger via delay).
 export default function Reveal({ children, delay = 0, className = "" }) {
