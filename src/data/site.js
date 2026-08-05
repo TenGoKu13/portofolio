@@ -241,11 +241,15 @@ export const site = {
       image: "/player-models/hitbox-ingame.jpg",
       title: "Hitbox d'origine (avant modification)",
       tags: ["Hitbox", "Avant"],
+      badge: "AVANT",
+      badgeTone: "before",
     },
     {
       image: "/player-models/hitbox-edition.jpg",
       title: "Modification de la hitbox — équilibrage combat",
       tags: ["Hitbox", "Après", "Anti-cheat"],
+      badge: "APRÈS",
+      badgeTone: "after",
     },
   ],
 

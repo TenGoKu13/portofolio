@@ -20,6 +20,11 @@ export default function PlayerModelsGallery({ items = [] }) {
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src={pm.image} alt={pm.title || `Player model ${i + 1}`} loading="lazy" />
+            {pm.badge && (
+              <span className={`pm-badge pm-badge--${pm.badgeTone || "before"}`}>
+                {pm.badge}
+              </span>
+            )}
             {(pm.title || pm.tags?.length) && (
               <div className="pm-meta">
                 {pm.title && <span className="pm-title">{pm.title}</span>}
