@@ -239,13 +239,13 @@ export const site = {
     },
     {
       image: "/player-models/hitbox-ingame.jpg",
-      title: "Réglage de hitbox (équilibrage combat)",
-      tags: ["Hitbox", "Combat"],
+      title: "Hitbox d'origine (avant modification)",
+      tags: ["Hitbox", "Avant"],
     },
     {
       image: "/player-models/hitbox-edition.jpg",
-      title: "Édition hitbox & rig",
-      tags: ["Hitbox", "Rig"],
+      title: "Modification de la hitbox — équilibrage combat",
+      tags: ["Hitbox", "Après", "Anti-cheat"],
     },
   ],
 
