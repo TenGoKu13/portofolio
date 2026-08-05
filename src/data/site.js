@@ -232,7 +232,21 @@ export const site = {
   // Exemple :
   //   { image: "/player-models/goku.jpg", title: "Goku custom", tags: ["Rig", "Bodygroups"] },
   playerModels: [
-    // ↓ Ajoute tes player models ici (supprime ce commentaire quand c'est fait)
+    {
+      image: "/player-models/fim-beta1.jpg",
+      title: "Skin FIM Beta 1 — Cosmos Community",
+      tags: ["Skin", "Bodygroups", "Tactique"],
+    },
+    {
+      image: "/player-models/hitbox-ingame.jpg",
+      title: "Réglage de hitbox (équilibrage combat)",
+      tags: ["Hitbox", "Combat"],
+    },
+    {
+      image: "/player-models/hitbox-edition.jpg",
+      title: "Édition hitbox & rig",
+      tags: ["Hitbox", "Rig"],
+    },
   ],
 
   // Cases à cocher proposées sur le formulaire de demande (précisions).
