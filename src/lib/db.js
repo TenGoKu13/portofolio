@@ -10,10 +10,14 @@ if (!fs.existsSync(dataDir)) {
 }
 
 const db = new Database(path.join(dataDir, "site.db"));
+// IMPORTANT : régler busy_timeout AVANT tout le reste. Le passage en WAL et
+// les CREATE/ALTER ci-dessous prennent un verrou exclusif ; si le build Next
+// (qui collecte les pages en parallèle) ou un serveur pm2 tourne en même temps,
+// on veut attendre le verrou au lieu d'échouer immédiatement sur
+// "database is locked". Réglé en second, ce timeout ne couvrait pas le passage
+// en WAL — c'était là que le build échouait.
+db.pragma("busy_timeout = 15000");
 db.pragma("journal_mode = WAL");
-// Patiente si la base est momentanément verrouillée (ex: build lancé pendant
-// que le serveur pm2 tourne encore) au lieu d'échouer sur "database is locked".
-db.pragma("busy_timeout = 8000");
 
 // Schéma : utilisateurs (via Discord), sessions, et demandes.
 db.exec(`
