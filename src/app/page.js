@@ -127,6 +127,19 @@ export default function Home() {
           </div>
         </section>
 
+        <Reveal>
+          <div
+            className="deco-band"
+            style={{ backgroundImage: "url(/deco/stars.jpg)" }}
+            role="img"
+            aria-label="Équipement tactique — ambiance S.T.A.R.S."
+          >
+            <span className="deco-caption">
+              <span className="deco-tick" /> ÉQUIPEMENT TACTIQUE · SECTEUR GMOD
+            </span>
+          </div>
+        </Reveal>
+
         {site.about && (
           <section className="section" id="a-propos">
             <Reveal>

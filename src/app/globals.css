@@ -511,6 +511,85 @@ a {
   font-size: 0.9rem;
 }
 
+/* ---------------- Bandeau décoratif (tactique) ---------------- */
+.deco-band {
+  position: relative;
+  height: 190px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  overflow: hidden;
+  background-size: cover;
+  background-position: center 35%;
+  display: flex;
+  align-items: flex-end;
+  margin: 8px 0;
+}
+/* Voile sombre + teinte indigo pour rester dans la palette et lisible */
+.deco-band::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+      90deg,
+      rgba(11, 17, 32, 0.85),
+      rgba(11, 17, 32, 0.45) 55%,
+      rgba(11, 17, 32, 0.7)
+    ),
+    radial-gradient(
+      circle at 80% 30%,
+      rgba(99, 102, 241, 0.28),
+      transparent 60%
+    );
+}
+/* Crochets d'angle « viseur » sur le bandeau */
+.deco-band::after {
+  content: "";
+  position: absolute;
+  inset: 10px;
+  pointer-events: none;
+  --hud-c: rgba(129, 140, 248, 0.55);
+  --hud-s: 16px;
+  --hud-t: 1.5px;
+  background:
+    linear-gradient(var(--hud-c), var(--hud-c)) 0 0 / var(--hud-s) var(--hud-t) no-repeat,
+    linear-gradient(var(--hud-c), var(--hud-c)) 0 0 / var(--hud-t) var(--hud-s) no-repeat,
+    linear-gradient(var(--hud-c), var(--hud-c)) 100% 0 / var(--hud-s) var(--hud-t) no-repeat,
+    linear-gradient(var(--hud-c), var(--hud-c)) 100% 0 / var(--hud-t) var(--hud-s) no-repeat,
+    linear-gradient(var(--hud-c), var(--hud-c)) 0 100% / var(--hud-s) var(--hud-t) no-repeat,
+    linear-gradient(var(--hud-c), var(--hud-c)) 0 100% / var(--hud-t) var(--hud-s) no-repeat,
+    linear-gradient(var(--hud-c), var(--hud-c)) 100% 100% / var(--hud-s) var(--hud-t) no-repeat,
+    linear-gradient(var(--hud-c), var(--hud-c)) 100% 100% / var(--hud-t) var(--hud-s) no-repeat;
+}
+.deco-caption {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin: 18px;
+  padding: 7px 14px;
+  border-radius: 999px;
+  background: rgba(11, 17, 32, 0.65);
+  border: 1px solid var(--border-strong);
+  backdrop-filter: blur(6px);
+  font-size: 0.68rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.deco-tick {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--red);
+  box-shadow: 0 0 10px var(--red);
+}
+@media (max-width: 600px) {
+  .deco-band {
+    height: 150px;
+  }
+}
+
 /* ---------------- À propos + compétences ---------------- */
 .about {
   display: grid;
