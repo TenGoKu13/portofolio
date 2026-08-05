@@ -1071,6 +1071,32 @@ a {
   flex-wrap: wrap;
   gap: 6px;
 }
+/* Étiquette AVANT / APRÈS sur la vignette */
+.pm-badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  z-index: 1;
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+  padding: 5px 12px;
+  border-radius: 999px;
+  backdrop-filter: blur(6px);
+  border: 1px solid;
+}
+.pm-badge--before {
+  color: #fca5a5;
+  background: rgba(239, 68, 68, 0.18);
+  border-color: rgba(239, 68, 68, 0.5);
+}
+.pm-badge--after {
+  color: #bbf7d0;
+  background: rgba(34, 197, 94, 0.18);
+  border-color: rgba(34, 197, 94, 0.5);
+  box-shadow: 0 0 16px -4px rgba(34, 197, 94, 0.6);
+}
 .pm-empty {
   text-align: center;
   padding: 40px 20px;
