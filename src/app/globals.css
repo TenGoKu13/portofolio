@@ -1839,12 +1839,20 @@ input:focus {
 }
 
 /* ---------------- Reveal au scroll ---------------- */
+/* Par défaut le contenu est VISIBLE : si le JS ne s'exécute pas (erreur
+   d'hydratation, chunk obsolète, vieux navigateur…), la page reste lisible
+   au lieu de s'afficher blanche. L'animation n'est armée que lorsque le
+   composant Reveal tourne réellement et pose la classe `reveal-on` sur <html>. */
 .reveal {
+  opacity: 1;
+  transform: none;
+}
+.reveal-on .reveal {
   opacity: 0;
   transform: translateY(20px);
   transition: opacity 0.6s var(--ease-out), transform 0.6s var(--ease-out);
 }
-.reveal.in {
+.reveal-on .reveal.in {
   opacity: 1;
   transform: none;
 }

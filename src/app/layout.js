@@ -35,6 +35,20 @@ export default function RootLayout({ children }) {
   return (
     <html lang="fr">
       <head>
+        {/* Armé AVANT le premier rendu : masque le contenu à animer sans
+            clignotement. Filet de sécurité : si le JS principal plante (chunk
+            cassé, erreur d'hydratation) ou ne prend pas la main sous 2,5 s, on
+            ré-affiche tout — la page ne reste jamais blanche. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              "(function(){var e=document.documentElement;e.classList.add('reveal-on');" +
+              "function s(){e.classList.remove('reveal-on');}" +
+              "addEventListener('error',function(v){if(window.__revealReady)return;" +
+              "var t=v&&v.target;if((t&&t.tagName==='SCRIPT')||v instanceof ErrorEvent)s();},true);" +
+              "setTimeout(function(){if(!window.__revealReady)s();},2500);})();",
+          }}
+        />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
           rel="preconnect"

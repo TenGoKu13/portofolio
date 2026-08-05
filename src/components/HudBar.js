@@ -7,6 +7,11 @@ export default function HudBar() {
   const [time, setTime] = useState("--:--:--");
 
   useEffect(() => {
+    // Signale que React a bien pris la main (hydratation réussie). Le filet de
+    // sécurité du <head> s'en sert pour NE PAS ré-afficher brutalement le
+    // contenu : ici, l'animation de reveal fonctionnera normalement.
+    window.__revealReady = true;
+
     const tick = () =>
       setTime(
         new Date().toLocaleTimeString("fr-FR", {
