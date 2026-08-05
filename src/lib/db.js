@@ -11,6 +11,9 @@ if (!fs.existsSync(dataDir)) {
 
 const db = new Database(path.join(dataDir, "site.db"));
 db.pragma("journal_mode = WAL");
+// Patiente si la base est momentanément verrouillée (ex: build lancé pendant
+// que le serveur pm2 tourne encore) au lieu d'échouer sur "database is locked".
+db.pragma("busy_timeout = 8000");
 
 // Schéma : utilisateurs (via Discord), sessions, et demandes.
 db.exec(`
