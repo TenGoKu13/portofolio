@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { asset } from "@/lib/asset";
 
 // Photo de profil du hero. Si l'image est absente/cassée, on retombe
 // proprement sur une initiale dans un cercle dégradé.
@@ -14,7 +15,7 @@ export default function Avatar({ src, name, size = 104 }) {
         // eslint-disable-next-line @next/next/no-img-element
         <img
           className="avatar-img"
-          src={src}
+          src={asset(src)}
           alt=""
           onError={() => setFailed(true)}
         />

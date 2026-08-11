@@ -1,39 +1,20 @@
 /** @type {import('next').NextConfig} */
 
-// En-têtes de sécurité appliqués à toutes les routes.
-const securityHeaders = [
-  {
-    key: "Content-Security-Policy",
-    value: [
-      "default-src 'self'",
-      "base-uri 'self'",
-      "form-action 'self'",
-      "frame-ancestors 'none'",
-      "object-src 'none'",
-      // Next injecte du JS/CSS inline pour l'hydratation.
-      "script-src 'self' 'unsafe-inline'",
-      "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
-      "font-src 'self' https://fonts.gstatic.com",
-      "img-src 'self' data: https://cdn.discordapp.com",
-      "connect-src 'self'",
-    ].join("; "),
-  },
-  { key: "X-Frame-Options", value: "DENY" },
-  { key: "X-Content-Type-Options", value: "nosniff" },
-  { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
-  {
-    key: "Permissions-Policy",
-    value: "camera=(), microphone=(), geolocation=()",
-  },
-];
+// Site 100 % statique, hébergé sur GitHub Pages (page de projet).
+// URL finale : https://tengoku13.github.io/site-web
+const basePath = "/site-web";
 
 const nextConfig = {
-  // better-sqlite3 est un module natif : on le laisse externe côté serveur
-  serverExternalPackages: ["better-sqlite3"],
-
-  async headers() {
-    return [{ source: "/:path*", headers: securityHeaders }];
-  },
+  // Export statique : `next build` génère un dossier `out/` déployable tel quel.
+  output: "export",
+  // Le site est servi sous un sous-chemin sur GitHub Pages.
+  basePath,
+  // GitHub Pages sert des dossiers avec index.html -> les URLs finissent par "/".
+  trailingSlash: true,
+  // Pas de serveur d'optimisation d'images en statique.
+  images: { unoptimized: true },
+  // Exposé au code client pour préfixer les <img> (cf. src/lib/asset.js).
+  env: { NEXT_PUBLIC_BASE_PATH: basePath },
 };
 
 export default nextConfig;

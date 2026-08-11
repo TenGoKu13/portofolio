@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Reveal from "@/components/Reveal";
 import { Icons } from "@/components/icons";
+import { asset } from "@/lib/asset";
 
 // Galerie "Réalisations web" : une carte cliquable par site.
 // Le clic mène à la page de détail /realisations/[slug].
@@ -24,7 +25,7 @@ export default function WebExamples({ examples = [], showHeading = true }) {
             <Link className="example example-link" href={`/realisations/${ex.slug}`}>
               <div className="example-cover">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={ex.cover} alt={`Capture du site ${ex.title}`} loading="lazy" />
+                <img src={asset(ex.cover)} alt={`Capture du site ${ex.title}`} loading="lazy" />
                 <span className="example-open">
                   Voir le projet <Icons.arrow />
                 </span>

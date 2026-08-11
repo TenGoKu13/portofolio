@@ -3,7 +3,8 @@ import { site } from "@/data/site";
 import Ambient from "@/components/Ambient";
 import HudBar from "@/components/HudBar";
 
-const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://tengoku.ch";
+const baseUrl =
+  process.env.NEXT_PUBLIC_BASE_URL || "https://tengoku13.github.io/site-web";
 
 export const metadata = {
   metadataBase: new URL(baseUrl),

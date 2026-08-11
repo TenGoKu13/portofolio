@@ -110,9 +110,14 @@ export default function RealisationPage({ params }) {
             <Link className="btn btn-ghost" href="/realisations">
               <span className="back-arrow">←</span> Toutes les réalisations
             </Link>
-            <Link className="btn" href="/demande">
-              Faire une demande <Icons.arrow />
-            </Link>
+            <a
+              className="btn btn-indigo"
+              href={`https://discord.com/users/${site.discordUserId}`}
+              target="_blank"
+              rel="noreferrer"
+            >
+              <Icons.discord /> Me contacter
+            </a>
           </div>
         </section>
 
