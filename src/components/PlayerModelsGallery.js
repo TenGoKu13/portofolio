@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { asset } from "@/lib/asset";
 
 // Grille de player models avec agrandissement (lightbox).
 export default function PlayerModelsGallery({ items = [] }) {
@@ -19,7 +20,7 @@ export default function PlayerModelsGallery({ items = [] }) {
             aria-label={`Agrandir ${pm.title || "player model"}`}
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={pm.image} alt={pm.title || `Player model ${i + 1}`} loading="lazy" />
+            <img src={asset(pm.image)} alt={pm.title || `Player model ${i + 1}`} loading="lazy" />
             {pm.badge && (
               <span className={`pm-badge pm-badge--${pm.badgeTone || "before"}`}>
                 {pm.badge}
@@ -61,7 +62,7 @@ export default function PlayerModelsGallery({ items = [] }) {
           </button>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src={items[open].image}
+            src={asset(items[open].image)}
             alt={items[open].title || "Player model"}
             onClick={(e) => e.stopPropagation()}
           />

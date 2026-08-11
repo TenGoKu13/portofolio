@@ -4,8 +4,8 @@ import Footer from "@/components/Footer";
 import Reveal from "@/components/Reveal";
 import Avatar from "@/components/Avatar";
 import Stats from "@/components/Stats";
-import Reviews from "@/components/Reviews";
 import { Icons } from "@/components/icons";
+import { asset } from "@/lib/asset";
 import { site } from "@/data/site";
 
 export default function Home() {
@@ -37,9 +37,17 @@ export default function Home() {
           </Reveal>
           <Reveal delay={260}>
             <div className="hero-actions">
-              <Link className="btn" href="/demande">
-                Faire une demande
-              </Link>
+              <a
+                className="btn btn-indigo"
+                href={`https://discord.com/users/${site.discordUserId}`}
+                target="_blank"
+                rel="noreferrer"
+              >
+                <Icons.discord /> Me contacter
+              </a>
+              <a className="btn btn-ghost" href={`mailto:${site.socials.email}`}>
+                <Icons.email /> Email
+              </a>
               {site.socials.github && (
                 <a
                   className="btn btn-ghost"
@@ -130,7 +138,7 @@ export default function Home() {
         <Reveal>
           <div
             className="deco-band"
-            style={{ backgroundImage: "url(/deco/stars.jpg)" }}
+            style={{ backgroundImage: `url(${asset("/deco/stars.jpg")})` }}
             role="img"
             aria-label="Équipement tactique — ambiance S.T.A.R.S."
           >
@@ -175,8 +183,6 @@ export default function Home() {
             </div>
           </section>
         )}
-
-        <Reviews />
 
         {socials.length > 0 && (
           <section className="section" id="contact">

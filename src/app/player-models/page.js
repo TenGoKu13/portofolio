@@ -50,9 +50,14 @@ export default function PlayerModelsPage() {
             <Reveal>
               <div className="pm-empty">
                 <p>La galerie arrive bientôt — de nouveaux rendus sont en préparation.</p>
-                <Link className="btn" href="/demande">
-                  Commander un player model <Icons.arrow />
-                </Link>
+                <a
+                  className="btn btn-indigo"
+                  href={`https://discord.com/users/${site.discordUserId}`}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <Icons.discord /> Commander un player model
+                </a>
               </div>
             </Reveal>
           )}

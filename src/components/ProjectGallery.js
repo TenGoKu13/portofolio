@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { asset } from "@/lib/asset";
 
 // Galerie d'images d'une réalisation, avec agrandissement (lightbox).
 export default function ProjectGallery({ shots = [], title = "" }) {
@@ -19,7 +20,7 @@ export default function ProjectGallery({ shots = [], title = "" }) {
             aria-label={`Agrandir la capture ${i + 1} de ${title}`}
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={src} alt={`Capture ${i + 1} de ${title}`} loading="lazy" />
+            <img src={asset(src)} alt={`Capture ${i + 1} de ${title}`} loading="lazy" />
             <span className="pg-zoom">Agrandir</span>
           </button>
         ))}
@@ -43,7 +44,7 @@ export default function ProjectGallery({ shots = [], title = "" }) {
           </button>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src={shots[open]}
+            src={asset(shots[open])}
             alt={`Capture de ${title}`}
             onClick={(e) => e.stopPropagation()}
           />
