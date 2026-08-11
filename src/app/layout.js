@@ -4,7 +4,7 @@ import Ambient from "@/components/Ambient";
 import HudBar from "@/components/HudBar";
 
 const baseUrl =
-  process.env.NEXT_PUBLIC_BASE_URL || "https://tengoku13.github.io/site-web";
+  process.env.NEXT_PUBLIC_BASE_URL || "https://tengoku13.github.io/portofolio";
 
 export const metadata = {
   metadataBase: new URL(baseUrl),
