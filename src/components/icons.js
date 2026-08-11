@@ -1,4 +1,3 @@
-// Icônes SVG (jamais d'emoji comme icône — règle du design system).
 const base = { width: 18, height: 18, viewBox: "0 0 24 24", "aria-hidden": true };
 
 export const Icons = {

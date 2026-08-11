@@ -1,31 +1,21 @@
-// ⚙️  Édite ce fichier pour personnaliser ton portfolio.
-// Pas besoin de toucher au reste du code.
-
 export const site = {
   name: "TenGoKu",
   role: "Développeur & PM Maker GMod — Sites web, Bots Discord & Outils",
   tagline:
     "Je crée des player models pour Garry's Mod, je conçois des sites web, des bots Discord et des outils. Bientôt : mon app de compression et d'optimisation de player models.",
 
-  // Ta photo de profil (hero). Remplace le placeholder :
-  // dépose ta photo dans public/ (ex: public/avatar.png) puis mets son
-  // chemin ici, ex: "/avatar.png". Laisse "" pour afficher une initiale.
   avatar: "/avatar.jpg",
 
-  // Ton ID Discord : sert au bouton "Me contacter en DM" sur les demandes.
   discordUserId: "806590748791144448",
 
-  // Tes liens (mets tes vraies URLs). Laisse vide "" pour cacher un lien.
   socials: {
     github: "https://github.com/tengoku13",
-    discord: "", // ex: lien d'invitation de ton serveur
+    discord: "",
     twitter: "",
     youtube: "",
     email: "tengokutengoku963@gmail.com",
   },
 
-  // Section "À propos" + compétences (page d'accueil).
-  // Édite librement le texte et les groupes de compétences.
   about: {
     text: [
       "Je crée des player models pour Garry's Mod depuis plusieurs années : création, port, rig, retexture et optimisation. À côté, je développe des sites web modernes, des bots Discord et des outils sur mesure.",
@@ -60,8 +50,6 @@ export const site = {
     ],
   },
 
-  // Chiffres mis en avant sur l'accueil (preuve sociale).
-  // "value" = nombre, "suffix" = ce qui s'affiche après (ex: "+").
   stats: [
     { value: 25, suffix: "+", label: "Commandes livrées" },
     { value: 20, suffix: "+", label: "Player models" },
@@ -70,9 +58,6 @@ export const site = {
     { value: 1, suffix: "", label: "Bot Discord" },
   ],
 
-  // Tes projets à mettre en avant.
-  // "link" = URL cliquable (laisse "" si pas encore de lien).
-  // Remplace les descriptions / liens par tes vrais projets.
   projects: [
     {
       title: "Compresseur de Player Models",
@@ -114,10 +99,6 @@ export const site = {
     },
   ],
 
-  // Exemples de sites web déjà réalisés (galerie "Réalisations web").
-  // Chaque exemple : titre, sous-titre, description, stack, fonctionnalités,
-  // une image principale (cover) et des captures supplémentaires (shots).
-  // Dépose les images dans public/examples/ et référence-les ici.
   webExamples: [
     {
       slug: "ait-medical-corps",
@@ -212,8 +193,6 @@ export const site = {
     },
   ],
 
-  // Types de demandes proposés dans le formulaire.
-  // "eta" = temps estimé de réalisation (indicatif, affiché sur le formulaire).
   requestTypes: [
     { value: "pm_create", label: "Créer un player model (GMod)", eta: "~ 2 à 3 jours" },
     { value: "pm_modify", label: "Modifier / éditer un player model", eta: "~ 1 jour" },
@@ -226,11 +205,6 @@ export const site = {
     { value: "autre", label: "Autre demande", eta: "à définir ensemble" },
   ],
 
-  // 🎮 Galerie Player Models (page /player-models).
-  // Dépose tes rendus dans public/player-models/ puis ajoute une entrée ici.
-  // Chaque entrée : image (obligatoire), title, tags (facultatifs).
-  // Exemple :
-  //   { image: "/player-models/goku.jpg", title: "Goku custom", tags: ["Rig", "Bodygroups"] },
   playerModels: [
     {
       image: "/player-models/fim-beta1.jpg",
@@ -253,8 +227,6 @@ export const site = {
     },
   ],
 
-  // Cases à cocher proposées sur le formulaire de demande (précisions).
-  // Édite librement cette liste.
   checklist: [
     "Fournir les fichiers sources",
     "Optimisation / compression incluse",
@@ -265,13 +237,12 @@ export const site = {
     "Livraison prioritaire (urgent)",
   ],
 
-  // Infos utilisées par le footer et les pages légales (Terms / Privacy).
   legal: {
     country: "Suisse",
     madeIn: "Made in Switzerland",
     contactEmail: "tengokutengoku963@gmail.com",
     lastUpdated: "2026-07-31",
-    // Hébergeur du site (obligatoire dans les mentions légales).
+
     host: {
       name: "OVH SAS (OVHcloud)",
       address: "2 rue Kellermann, 59100 Roubaix, France",

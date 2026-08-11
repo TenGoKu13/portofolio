@@ -1,10 +1,8 @@
 import { ImageResponse } from "next/og";
 import { site } from "@/data/site";
 
-// Généré une fois au build (export statique).
 export const dynamic = "force-static";
 
-// Image d'aperçu affichée au partage du lien (Discord, réseaux, etc.).
 export const alt = `${site.name} — Portfolio`;
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";

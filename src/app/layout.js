@@ -36,10 +36,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="fr">
       <head>
-        {/* Armé AVANT le premier rendu : masque le contenu à animer sans
-            clignotement. Filet de sécurité : si le JS principal plante (chunk
-            cassé, erreur d'hydratation) ou ne prend pas la main sous 2,5 s, on
-            ré-affiche tout — la page ne reste jamais blanche. */}
+
         <script
           dangerouslySetInnerHTML={{
             __html:

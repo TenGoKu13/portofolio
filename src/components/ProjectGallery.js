@@ -3,9 +3,8 @@
 import { useState } from "react";
 import { asset } from "@/lib/asset";
 
-// Galerie d'images d'une réalisation, avec agrandissement (lightbox).
 export default function ProjectGallery({ shots = [], title = "" }) {
-  const [open, setOpen] = useState(null); // index | null
+  const [open, setOpen] = useState(null);
   if (!shots.length) return null;
 
   return (
@@ -19,7 +18,7 @@ export default function ProjectGallery({ shots = [], title = "" }) {
             onClick={() => setOpen(i)}
             aria-label={`Agrandir la capture ${i + 1} de ${title}`}
           >
-            {/* eslint-disable-next-line @next/next/no-img-element */}
+
             <img src={asset(src)} alt={`Capture ${i + 1} de ${title}`} loading="lazy" />
             <span className="pg-zoom">Agrandir</span>
           </button>
@@ -42,7 +41,7 @@ export default function ProjectGallery({ shots = [], title = "" }) {
           >
             ✕
           </button>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
+
           <img
             src={asset(shots[open])}
             alt={`Capture de ${title}`}

@@ -1,13 +1,5 @@
-/* ============================================================
-   TenGoKu Portfolio — Design system "Modern Dark / Cinema"
-   Généré via le skill ui-ux-pro-max :
-   - Style : dark cinématique, glassmorphism, glow, ambient light
-   - Typo  : Orbitron (titres) + JetBrains Mono (corps)
-   - Accent: indigo (brand/glow) + vert (actions "run")
-   ============================================================ */
-
 :root {
-  /* Fonds (on évite le #000 pur -> smear OLED) */
+
   --bg: #0b1120;
   --bg-2: #0f172a;
   --surface: rgba(30, 41, 59, 0.45);
@@ -15,12 +7,10 @@
   --border: rgba(148, 163, 184, 0.16);
   --border-strong: rgba(148, 163, 184, 0.28);
 
-  /* Texte */
   --text: #f8fafc;
   --muted: #94a3b8;
   --muted-dim: #64748b;
 
-  /* Accents */
   --indigo: #818cf8;
   --indigo-strong: #6366f1;
   --green: #22c55e;
@@ -63,7 +53,6 @@ body {
   overflow-x: hidden;
 }
 
-/* --- Ambient light blobs (fond animé) --- */
 .ambient {
   position: fixed;
   inset: 0;
@@ -106,7 +95,6 @@ body {
   }
 }
 
-/* Grille subtile en overlay */
 .ambient .grid-overlay {
   position: absolute;
   inset: 0;
@@ -116,7 +104,6 @@ body {
   mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 40%, transparent 100%);
 }
 
-/* Scanlines HUD (survival-horror) — ne change pas la palette */
 .scanlines {
   position: fixed;
   inset: 0;
@@ -130,7 +117,6 @@ body {
   opacity: 0.9;
 }
 
-/* ---------------- Barre de statut HUD (haut de page) ---------------- */
 .hudbar {
   display: flex;
   align-items: center;
@@ -179,7 +165,6 @@ body {
   }
 }
 
-/* Crochets d'angle « viseur » réutilisables (détail tactique) */
 .hud-corners {
   --hud-c: rgba(129, 140, 248, 0.4);
   --hud-s: 12px;
@@ -206,7 +191,6 @@ a {
   padding: 0 24px;
 }
 
-/* ---------------- Navbar ---------------- */
 .nav {
   display: flex;
   align-items: center;
@@ -250,7 +234,6 @@ a {
   background: var(--surface);
 }
 
-/* ---------------- Boutons ---------------- */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -293,12 +276,11 @@ a {
   box-shadow: none;
 }
 
-/* ---------------- Hero ---------------- */
 .hero {
   padding: 90px 0 60px;
   position: relative;
 }
-/* Photo de profil du hero */
+
 .avatar-ring {
   position: relative;
   border-radius: 50%;
@@ -402,7 +384,6 @@ a {
   flex-wrap: wrap;
 }
 
-/* ---------------- Stats (preuve sociale) ---------------- */
 .stats {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
@@ -424,7 +405,7 @@ a {
   -webkit-backdrop-filter: blur(12px);
   transition: transform 0.3s var(--ease-out), border-color 0.3s, box-shadow 0.3s;
 }
-/* Crochets d'angle « viseur » sur les tuiles de stats */
+
 .stat::after {
   content: "";
   position: absolute;
@@ -474,7 +455,6 @@ a {
   }
 }
 
-/* ---------------- Sections ---------------- */
 .section {
   padding: 56px 0;
 }
@@ -493,7 +473,7 @@ a {
   margin: 0;
   letter-spacing: 0.5px;
 }
-/* Barre d'accent tactique devant chaque titre de section */
+
 .section-head h2::before {
   content: "";
   position: absolute;
@@ -511,7 +491,6 @@ a {
   font-size: 0.9rem;
 }
 
-/* ---------------- Bandeau décoratif (tactique) ---------------- */
 .deco-band {
   position: relative;
   height: 190px;
@@ -524,7 +503,7 @@ a {
   align-items: flex-end;
   margin: 8px 0;
 }
-/* Voile sombre + teinte indigo pour rester dans la palette et lisible */
+
 .deco-band::before {
   content: "";
   position: absolute;
@@ -541,7 +520,7 @@ a {
       transparent 60%
     );
 }
-/* Crochets d'angle « viseur » sur le bandeau */
+
 .deco-band::after {
   content: "";
   position: absolute;
@@ -590,7 +569,6 @@ a {
   }
 }
 
-/* ---------------- À propos + compétences ---------------- */
 .about {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -630,7 +608,6 @@ a {
   }
 }
 
-/* ---------------- Projets (grid glass) ---------------- */
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -666,7 +643,7 @@ a {
 .card:hover::before {
   opacity: 1;
 }
-/* Crochets d'angle « viseur » sur les cartes (toujours visibles) */
+
 .card::after {
   content: "";
   position: absolute;
@@ -726,7 +703,7 @@ a {
   opacity: 1;
   transform: none;
 }
-/* Bouton d'appel visible en bas des cartes cliquables */
+
 .card-cta {
   display: inline-flex;
   align-items: center;
@@ -792,7 +769,6 @@ a {
   border-radius: 6px;
 }
 
-/* ---------------- Réalisations web (galerie) ---------------- */
 .examples {
   display: grid;
   gap: 24px;
@@ -810,7 +786,7 @@ a {
   -webkit-backdrop-filter: blur(12px);
   transition: transform 0.3s var(--ease-out), border-color 0.3s, box-shadow 0.3s;
 }
-/* Toute la carte est un lien cliquable */
+
 .example-link {
   cursor: pointer;
   color: inherit;
@@ -820,7 +796,7 @@ a {
   border-color: var(--indigo);
   box-shadow: var(--shadow), var(--glow-indigo);
 }
-/* Liseré lumineux au survol pour signaler le clic */
+
 .example-link::after {
   content: "";
   position: absolute;
@@ -856,7 +832,7 @@ a {
   transform: scale(1.05);
   opacity: 0.9;
 }
-/* Pastille "Voir le projet" qui apparaît sur l'image au survol */
+
 .example-open {
   position: absolute;
   bottom: 12px;
@@ -921,7 +897,7 @@ a {
   font-size: 0.9rem;
   margin: 12px 0 14px;
 }
-/* "Découvrir le projet →" en bas de carte : indice de clic permanent */
+
 .example-cta {
   display: inline-flex;
   align-items: center;
@@ -946,7 +922,6 @@ a {
   transform: translate(3px, -3px);
 }
 
-/* Listes de fonctionnalités (partagé avec la page de détail) */
 .example-features {
   list-style: none;
   padding: 0;
@@ -968,7 +943,6 @@ a {
   color: var(--indigo);
 }
 
-/* ---------------- Page détail réalisation ---------------- */
 .back-link {
   display: inline-flex;
   align-items: center;
@@ -1037,7 +1011,6 @@ a {
   margin: 0 0 18px;
 }
 
-/* Galerie d'aperçus (page détail) */
 .pg-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -1095,7 +1068,6 @@ a {
   }
 }
 
-/* ---------------- Galerie Player Models ---------------- */
 .pm-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
@@ -1150,7 +1122,7 @@ a {
   flex-wrap: wrap;
   gap: 6px;
 }
-/* Étiquette AVANT / APRÈS sur la vignette */
+
 .pm-badge {
   position: absolute;
   top: 12px;
@@ -1188,7 +1160,6 @@ a {
   margin: 0 0 18px;
 }
 
-/* Lightbox plein écran */
 .lightbox {
   position: fixed;
   inset: 0;
@@ -1248,7 +1219,6 @@ a {
   }
 }
 
-/* ---------------- Avis clients ---------------- */
 .reviews-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -1303,7 +1273,6 @@ a {
   color: var(--yellow);
 }
 
-/* Bloc formulaire d'avis */
 .review-cta {
   background: var(--surface);
   border: 1px solid var(--border);
@@ -1338,7 +1307,6 @@ a {
   color: var(--yellow);
 }
 
-/* Modération des avis (admin) */
 .admin-reviews {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -1358,7 +1326,6 @@ a {
   margin-left: 8px;
 }
 
-/* ---------------- Formulaire ---------------- */
 .form {
   background: var(--surface);
   border: 1px solid var(--border);
@@ -1400,7 +1367,6 @@ input:focus {
   box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.18);
 }
 
-/* ---------------- User chip ---------------- */
 .user-chip {
   display: flex;
   align-items: center;
@@ -1421,7 +1387,6 @@ input:focus {
   white-space: nowrap;
 }
 
-/* ---------------- Table admin ---------------- */
 .table {
   width: 100%;
   border-collapse: collapse;
@@ -1468,7 +1433,6 @@ input:focus {
   color: #fca5a5;
 }
 
-/* Temps estimé (ETA) sous le type de demande */
 .eta {
   display: inline-flex;
   align-items: center;
@@ -1485,7 +1449,6 @@ input:focus {
   color: var(--green);
 }
 
-/* Checklist du formulaire de demande */
 .checklist {
   display: grid;
   gap: 10px;
@@ -1511,7 +1474,6 @@ input:focus {
   color: var(--text);
 }
 
-/* ---------------- Suivi d'avancement (demande) ---------------- */
 .progress-box {
   background: var(--surface);
   border: 1px solid var(--border);
@@ -1628,7 +1590,6 @@ input:focus {
   flex: 1;
 }
 
-/* ---------------- Divers ---------------- */
 .note {
   color: var(--muted);
   font-size: 0.9rem;
@@ -1707,7 +1668,6 @@ input:focus {
   text-align: center;
 }
 
-/* Liste "Mes demandes" */
 .req-list {
   display: grid;
   gap: 12px;
@@ -1741,7 +1701,6 @@ input:focus {
   font-weight: 600;
 }
 
-/* Fil de discussion (messagerie) */
 .thread {
   border: 1px solid var(--border);
   border-radius: var(--radius);
@@ -1810,7 +1769,6 @@ input:focus {
   flex: 1;
 }
 
-/* Pages légales (Terms / Privacy) */
 .legal {
   max-width: 760px;
 }
@@ -1838,11 +1796,6 @@ input:focus {
   margin-bottom: 8px;
 }
 
-/* ---------------- Reveal au scroll ---------------- */
-/* Par défaut le contenu est VISIBLE : si le JS ne s'exécute pas (erreur
-   d'hydratation, chunk obsolète, vieux navigateur…), la page reste lisible
-   au lieu de s'afficher blanche. L'animation n'est armée que lorsque le
-   composant Reveal tourne réellement et pose la classe `reveal-on` sur <html>. */
 .reveal {
   opacity: 1;
   transform: none;
@@ -1869,7 +1822,6 @@ input:focus {
   }
 }
 
-/* Accessibilité : respect de prefers-reduced-motion */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

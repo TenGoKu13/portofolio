@@ -3,9 +3,8 @@
 import { useState } from "react";
 import { asset } from "@/lib/asset";
 
-// Grille de player models avec agrandissement (lightbox).
 export default function PlayerModelsGallery({ items = [] }) {
-  const [open, setOpen] = useState(null); // index | null
+  const [open, setOpen] = useState(null);
   if (!items.length) return null;
 
   return (
@@ -19,7 +18,7 @@ export default function PlayerModelsGallery({ items = [] }) {
             onClick={() => setOpen(i)}
             aria-label={`Agrandir ${pm.title || "player model"}`}
           >
-            {/* eslint-disable-next-line @next/next/no-img-element */}
+
             <img src={asset(pm.image)} alt={pm.title || `Player model ${i + 1}`} loading="lazy" />
             {pm.badge && (
               <span className={`pm-badge pm-badge--${pm.badgeTone || "before"}`}>
@@ -60,7 +59,7 @@ export default function PlayerModelsGallery({ items = [] }) {
           >
             ✕
           </button>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
+
           <img
             src={asset(items[open].image)}
             alt={items[open].title || "Player model"}

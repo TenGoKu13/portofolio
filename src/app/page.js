@@ -77,11 +77,11 @@ export default function Home() {
           </Reveal>
           <div className="grid">
             {site.projects.map((p, i) => {
-              // La galerie Player Models n'est cliquable que si des images existent.
+
               const pmNotReady =
                 p.link === "/player-models" && !(site.playerModels?.length > 0);
               const clickable = Boolean(p.link) && !pmNotReady;
-              // Lien interne (#ancre ou /page) -> même onglet ; externe -> nouvel onglet
+
               const internal = clickable && /^[#/]/.test(p.link);
               const Card = clickable ? "a" : "article";
               const linkProps = clickable

@@ -1,6 +1,5 @@
 import { site } from "@/data/site";
 
-// Généré une fois au build (export statique).
 export const dynamic = "force-static";
 
 const baseUrl =
