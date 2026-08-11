@@ -1,4 +1,3 @@
-// Fond décoratif : blobs de lumière ambiante + grille subtile + scanlines HUD.
 export default function Ambient() {
   return (
     <>

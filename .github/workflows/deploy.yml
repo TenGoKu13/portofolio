@@ -1,19 +1,15 @@
 name: Déploiement GitHub Pages
 
-# Construit le site (export statique Next.js) et le publie sur GitHub Pages
-# à chaque push sur la branche principale.
 on:
   push:
     branches: [main]
   workflow_dispatch:
 
-# Permissions nécessaires au déploiement Pages.
 permissions:
   contents: read
   pages: write
   id-token: write
 
-# Un seul déploiement à la fois.
 concurrency:
   group: pages
   cancel-in-progress: true

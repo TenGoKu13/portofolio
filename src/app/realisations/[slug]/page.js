@@ -9,7 +9,6 @@ import { site } from "@/data/site";
 
 const examples = site.webExamples || [];
 
-// Génère une page statique par réalisation.
 export function generateStaticParams() {
   return examples.filter((e) => e.slug).map((e) => ({ slug: e.slug }));
 }

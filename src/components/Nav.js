@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { site } from "@/data/site";
 
-// Barre de navigation (statique).
 export default function Nav() {
   return (
     <nav className="nav">

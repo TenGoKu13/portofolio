@@ -3,8 +3,6 @@
 import { useState } from "react";
 import { asset } from "@/lib/asset";
 
-// Photo de profil du hero. Si l'image est absente/cassée, on retombe
-// proprement sur une initiale dans un cercle dégradé.
 export default function Avatar({ src, name, size = 104 }) {
   const [failed, setFailed] = useState(false);
   const initial = (name || "?").trim().charAt(0).toUpperCase();
@@ -12,7 +10,7 @@ export default function Avatar({ src, name, size = 104 }) {
   return (
     <div className="avatar-ring" style={{ width: size, height: size }}>
       {src && !failed ? (
-        // eslint-disable-next-line @next/next/no-img-element
+
         <img
           className="avatar-img"
           src={asset(src)}

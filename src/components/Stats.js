@@ -2,7 +2,6 @@
 
 import { useEffect, useRef, useState } from "react";
 
-// Compteur qui s'anime (0 -> valeur) quand il entre dans le viewport.
 function Counter({ value, suffix = "" }) {
   const [n, setN] = useState(0);
   const ref = useRef(null);
@@ -29,7 +28,7 @@ function Counter({ value, suffix = "" }) {
         const start = performance.now();
         const tick = (now) => {
           const p = Math.min((now - start) / duration, 1);
-          const eased = 1 - Math.pow(1 - p, 3); // ease-out cubic
+          const eased = 1 - Math.pow(1 - p, 3);
           setN(Math.round(value * eased));
           if (p < 1) requestAnimationFrame(tick);
         };
